@@ -1,0 +1,16 @@
+.inputCustomField{
+  border: none;
+  filter: $drop-shadow;
+  -webkit-filter: $drop-shadow;
+  width: 100%;
+  padding: 5px 15px;
+}
+.inputCustomField::placeholder{
+  font-weight: 600;
+}
+.inputCustomField:focus{
+  outline: none;
+}
+.inputCustomField.bottomLine{
+  border-bottom: 5px solid $primary;
+}
