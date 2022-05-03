@@ -15,3 +15,7 @@ a{
 a:hover{
   color: $secondary;
 }
+.shadow-filter{
+  filter: $drop-shadow;
+  -webkit-filter: $drop-shadow;
+}
