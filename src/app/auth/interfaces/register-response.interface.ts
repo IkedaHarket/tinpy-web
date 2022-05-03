@@ -1,4 +1,4 @@
-export interface RegisterResponse {
+export interface AuthResponse {
   ok?:     boolean;
   errors?: Errors;
   msg?:    string;

@@ -27,7 +27,6 @@ export class RegisterComponent {
   submit(){
     if(this.formRegister.invalid) return
     const {correo,password} = this.formRegister.value;
-    console.log('Registrando...');
     this.authService.postRegisterUser(correo,password).subscribe({
       next: (res)=> console.log('NEXT',res),
       error: ({error})=> {
