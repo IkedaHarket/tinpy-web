@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
