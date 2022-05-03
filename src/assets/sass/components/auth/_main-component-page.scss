@@ -1,0 +1,41 @@
+.authMain__page{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  .authMain__container{
+    position: relative;
+    margin-top: 100px;
+    background-color: $white;
+    width: 70vw;
+    height: 70vh;
+    filter: $drop-shadow;
+    -webkit-filter: $drop-shadow;
+    .authMain__container-forms{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .authMain__page{
+    .authMain__container{
+      width: 90vw;
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .authMain__page{
+    .authMain__container{
+      margin-top: 50px;
+      width: 95vw;
+      height: 90vh;
+      .authMain__container-forms{
+        flex-direction: column;
+      }
+    }
+  }
+}

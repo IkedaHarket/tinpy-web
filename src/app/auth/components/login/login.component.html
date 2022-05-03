@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="auth-form">
+  <form [formGroup]="formLogin">
+    <h4>Login</h4>
+
+    <div class="auth-form-input">
+      <input
+      class="inputCustomField bottomLine auth-form__inputs"
+      type="text"
+      placeholder="Correo"
+      formControlName="correo"
+      />
+      <span
+      error-msg
+      mensaje="Correo no válido"
+      [valido]="tieneError('correo')"
+      >
+      </span>
+    </div>
+    <div class="auth-form-input">
+        <input
+        class="inputCustomField bottomLine auth-form__inputs"
+        type="password"
+        placeholder="Contraseña"
+        formControlName="password"
+        />
+        <span
+        error-msg
+        mensaje="Contraseña no válida"
+        [valido]="tieneError('password')"
+        >
+        </span>
+    </div>
+
+    <button class="tinpyButton" (click)="submit()">
+      Crear Cuenta
+    </button>
+  </form>
+</div>

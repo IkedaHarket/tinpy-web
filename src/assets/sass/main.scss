@@ -5,9 +5,15 @@
 @import './base/colors';
 @import './base/base';
 
-@import './components/footer';
-@import './components/header';
-@import './components/tinpy-logo';
-@import './components/input-field';
-@import './components/imagen-circular';
+@import './components/shared/footer';
+@import './components/shared/header';
+@import './components/shared/tinpy-logo';
+@import './components/shared/input-field';
+@import './components/shared/imagen-circular';
+@import './components/shared/tinpy-button';
+
+@import './components/auth/main-component-page';
+@import './components/auth/slider';
+@import './components/auth/auth-form';
+
 

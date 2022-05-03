@@ -1,1 +1,52 @@
-<p>register works!</p>
+
+<div class="auth-form">
+  <form  [formGroup]="formRegister">
+    <h4>Registrarse</h4>
+
+    <div class="auth-form-input">
+        <input
+        class="inputCustomField bottomLine auth-form__inputs"
+        type="text"
+        placeholder="Correo"
+        formControlName="correo"
+        />
+        <span
+        error-msg
+        mensaje="Correo no válido"
+        [valido]="tieneError('correo')"
+        >
+        </span>
+    </div>
+    <div class="auth-form-input">
+      <input
+        class="inputCustomField bottomLine auth-form__inputs"
+        type="password"
+        placeholder="Contraseña"
+        formControlName="password"
+        />
+        <span
+        error-msg
+        mensaje="Contraseña no válida"
+        [valido]="tieneError('password')"
+        >
+        </span>
+    </div>
+    <div class="auth-form-input">
+      <input
+      class="inputCustomField bottomLine auth-form__inputs"
+      type="password"
+      placeholder="Confirmar Contraseña"
+      formControlName="password2"
+      />
+      <span
+        error-msg
+        mensaje="Las contraseñas no coinciden"
+        [valido]="tieneError('password2')"
+        >
+      </span>
+    </div>
+    <button class="tinpyButton" (click)="submit()">
+      Crear Cuenta
+    </button>
+  </form>
+</div>

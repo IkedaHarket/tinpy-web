@@ -1,0 +1,31 @@
+.tinpyButton{
+  background-color: $secondary;
+  color: $white;
+  font-weight: 500;
+  border: 2px solid $secondary;
+  cursor: pointer;
+  font-size: 24;
+  padding: 3px 15px;
+  outline: none;
+  transition: .3s ease background-color, .3s color, .3s border;
+  -webkit-transition: .3s ease background-color, .3s color, .3s border;
+  -moz-transition: .3s ease background-color, .3s color, .3s border;
+  -ms-transition: .3s ease background-color, .3s color, .3s border;
+  -o-transition: .3s ease background-color, .3s color, .3s border;
+}
+.tinpyButton:hover{
+  background-color: $white;
+  color: $secondary;
+  outline: none;
+  border: 2px solid $secondary;
+}
+.tinpyButton:focus{
+  outline: none;
+}
+.tinpyButton.fs-28{
+  font-size: 28px ;
+}
+.tinpyButton.fb-600{
+  font-weight: 600;
+}
+

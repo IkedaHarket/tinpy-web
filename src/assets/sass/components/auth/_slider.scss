@@ -1,0 +1,56 @@
+.auth-slider{
+  z-index: 100;
+  background-color: $primary;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .auth-slider__container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+  }
+  h2{
+    margin: 0;
+    font-size: 6rem;
+  }
+  transition: .5s ease right, .3s top;
+  -webkit-transition: .5s ease right, .3s top;
+  -moz-transition: .5s ease right, .3s top;
+  -ms-transition: .5s ease right, .3s top;
+  -o-transition: .5s ease right, .3s top;
+}
+.auth-slider.active{
+  transition: .5s ease right;
+  -webkit-transition: .5s ease right;
+  -moz-transition: .5s ease right;
+  -ms-transition: .5s ease right;
+  -o-transition: .5s ease right;
+  right: 50%;
+}
+@media screen and (max-width: 760px) {
+  .auth-slider{
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    top: 50%;
+  }
+  .auth-slider.active{
+    transition: .5s ease top;
+    -webkit-transition: .5s ease top;
+    -moz-transition: .5s ease top;
+    -ms-transition: .5s ease top;
+    -o-transition: .5s ease top;
+    top: 0;
+    right: 0;
+}
+}
