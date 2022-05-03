@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path:'',
+    loadChildren: ()=>import('./tinpy-public/tinpy-public.module').then(m=>m.TinpyPublicModule)
+  },
+  {
     path:'auth',
     loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
   },
-  { path:'**', redirectTo:'auth' }
+  { path:'**', redirectTo:'' }
 ];
 
 @NgModule({
