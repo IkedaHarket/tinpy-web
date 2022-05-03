@@ -36,7 +36,7 @@ export class HomeComponent {
           })
           return
         }
-        this.router.navigateByUrl('/search')
+        this.router.navigateByUrl('/search',{ state: { productos } })
       },
       error:(err)=> console.log(err),
     });

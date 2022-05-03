@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Producto } from '../../interfaces/productos/productos-by-name-response';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  productos : Producto[] = [];
 
-  ngOnInit(): void {
+  constructor(private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.activatedRoute.paramMap.subscribe( ()=> {
+      this.productos = window.history.state.productos
+    })
+    console.log(this.productos);
   }
 
 }
