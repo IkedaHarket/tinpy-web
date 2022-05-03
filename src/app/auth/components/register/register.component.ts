@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 
+import   Swal from 'sweetalert2';
+
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,17 +13,32 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
 
   formRegister: FormGroup = this.fb.group({
-    correo      :['',[Validators.required,Validators.email]],
-    password    :['',[Validators.required,Validators.minLength(6)]],
-    password2   :['',[Validators.required,Validators.minLength(6)]],
+    correo      :['test1@gmail.com',[Validators.required,Validators.email]],
+    password    :['123456',[Validators.required,Validators.minLength(6)]],
+    password2   :['123456',[Validators.required,Validators.minLength(6)]],
+  },{
+    validators  :       [this.validator.camposIguales('password','password2')]
   });
   constructor(
     private fb: FormBuilder,
-    private authService:AuthService
+    private authService:AuthService,
+    private validator:ValidatorService
     ){ }
   submit(){
-    console.table(this.formRegister.value)
-
+    if(this.formRegister.invalid) return
+    const {correo,password} = this.formRegister.value;
+    console.log('Registrando...');
+    this.authService.postRegisterUser(correo,password).subscribe({
+      next: (res)=> console.log('NEXT',res),
+      error: ({error})=> {
+        Swal.fire({
+          'title': error.errors['errors'][0].msg,
+          'icon': 'error',
+          'showConfirmButton': false,
+          'timer': 1500
+        })
+      },
+    })
   }
   tieneError(campo:string):boolean{
     if(this.formRegister.get(campo)?.errors && this.formRegister.controls[campo]?.touched){

@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class ErrMsgDirective  implements OnInit{
 
-  private _color = '#ff6259';
+  private _color = '#CB2B65';
   private _mensaje = 'Campo no válido'
 
   htmlElement: ElementRef<HTMLElement>
