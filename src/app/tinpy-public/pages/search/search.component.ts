@@ -15,8 +15,13 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( ()=> {
-      this.productos = window.history.state.productos
+      if(!window.history.state.productos){
+        this.productos = JSON.parse(localStorage.getItem('searchQuery') || '[]');
+      }else{
+        this.productos = window.history.state.productos
+      }
     })
+    localStorage.setItem('searchQuery',JSON.stringify(this.productos))
     console.log(this.productos);
   }
 
