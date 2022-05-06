@@ -1,0 +1,31 @@
+.custom-filter{
+  position: absolute;
+  left: 85px;
+  top: 80px;
+  width: 300px;
+  height: 600px;
+  background: $white;
+  filter: $drop-shadow;
+  z-index: 100;
+  transition: .5s ease left;
+  -webkit-transition: .5s ease left;
+  -moz-transition: .5s ease left;
+  -ms-transition: .5s ease left;
+  -o-transition: .5s ease left;
+  -webkit-filter: $drop-shadow;
+  h6{
+    text-align: center;
+    font-size: 26px;
+    margin: 20px 0;
+    font-weight: 500;
+  }
+  .custom-filter__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    select{
+      width: 200px;
+    }
+  }
+}

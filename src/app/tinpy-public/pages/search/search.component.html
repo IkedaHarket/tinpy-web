@@ -1,6 +1,34 @@
 
 <div class="search-page">
+
+  <div class="custom-filter">
+    <h6>Filtrar</h6>
+    <div class="custom-filter__form">
+      <select class="select-input-custom">
+        <option value="#"selected>Categoria</option>
+        <option value="1">Categoria 1</option>
+        <option value="2">Categoria 2</option>
+        <option value="3">Categoria 3</option>
+      </select>
+      <select class="select-input-custom">
+        <option value="#"selected>Precio</option>
+        <option value="1">Precio 1</option>
+        <option value="2">Precio 2</option>
+        <option value="3">Precio 3</option>
+      </select>
+      <select class="select-input-custom">
+        <option value="#"selected>Votos</option>
+        <option value="1">Mas Votados</option>
+        <option value="2">Menos Votados</option>
+      </select>
+    </div>
+  </div>
+
+
   <div class="search-page__productos" *ngIf="productos.length > 0">
+    <div class="search-page__productos-item" *ngFor="let producto of productos">
+      <app-product-card-full [producto]="producto"></app-product-card-full>
+    </div>
     <div class="search-page__productos-item" *ngFor="let producto of productos">
       <app-product-card-full [producto]="producto"></app-product-card-full>
     </div>

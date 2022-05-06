@@ -1,0 +1,48 @@
+.search-page{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 85px;
+  gap: 50px;
+  position: relative;
+  .search-page__productos{
+    width: 50vw;
+  }
+  .search-page__productos-item{
+    margin: 20px 0;
+  }
+}
+@media screen and (max-width:1580px) {
+  .search-page{
+    .custom-filter{
+      left: 20px;
+        //TODO COLOCAR ARRIBA DE LOS PRODUCTOS Y EXTRAER AL _custom-filter.scss
+    }
+    .search-page__productos{
+      width: 60vw;
+    }
+  }
+}
+@media screen and (max-width:1000px) {
+  .search-page{
+    padding: 20px 30px;
+    .custom-filter{
+      left:-300px;
+    }
+    .search-page__productos{
+      width: 80vw;
+    }
+  }
+}
+@media screen and (max-width:700px) {
+  .search-page{
+    padding: 20px;
+    .custom-filter{
+      left:-300px;
+    }
+    .search-page__productos{
+      width: 100vw;
+    }
+  }
+}

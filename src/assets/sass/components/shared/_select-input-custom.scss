@@ -1,0 +1,8 @@
+.select-input-custom{
+  border: none;
+  filter: $drop-shadow;
+  -webkit-filter: $drop-shadow;
+  outline: none;
+  height: 30px;
+  border-bottom: 3px solid $primary;
+}

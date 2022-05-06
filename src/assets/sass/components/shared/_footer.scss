@@ -1,4 +1,6 @@
 .footer{
+  position: relative;
+  z-index: 9999;
   min-height: 30vh;
   background-color: $secondary;
 }

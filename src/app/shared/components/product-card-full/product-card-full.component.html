@@ -1,5 +1,21 @@
 <div class="product-card-full">
   <div class="product-card-full__img">
-    <img [src]="producto.imagenPrincipal" alt="producto.nombre">
+    <img src="{{tinpyBackendURL}}/{{producto.imagenPrincipal}}" alt="producto.nombre">
+  </div>
+  <div class="product-card-full__info-container">
+    <div class="product-card-full__info">
+      <h6>{{producto.nombre}}</h6>
+      <span class="c-primary">{{producto.categoria?.nombre || 'Sin categoria'}}</span>
+      <!-- <p>{{producto?.descripcion || ''}}</p> -->
+      <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere atque cum molestiae quibusdam perspiciatis dolores velit ut ipsum? Doloribus impedit tenetur ullam repellat veniam nostrum explicabo modi temporibus aliquam sequi!</p>
+    </div>
+    <div class="product-card-full__footer">
+      <button class="tinpyButton">
+        Ver Mas...
+      </button>
+      <span>
+          {{producto.precio || '???' }} CLP
+      </span>
+    </div>
   </div>
 </div>
