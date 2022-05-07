@@ -15,10 +15,7 @@
 }
 @media screen and (max-width:1580px) {
   .search-page{
-    .custom-filter{
-      left: 20px;
-        //TODO COLOCAR ARRIBA DE LOS PRODUCTOS Y EXTRAER AL _custom-filter.scss
-    }
+    padding-top: 40px;
     .search-page__productos{
       width: 60vw;
     }
@@ -27,9 +24,6 @@
 @media screen and (max-width:1000px) {
   .search-page{
     padding: 20px 30px;
-    .custom-filter{
-      left:-300px;
-    }
     .search-page__productos{
       width: 80vw;
     }
@@ -38,9 +32,6 @@
 @media screen and (max-width:700px) {
   .search-page{
     padding: 20px;
-    .custom-filter{
-      left:-300px;
-    }
     .search-page__productos{
       width: 100vw;
     }
