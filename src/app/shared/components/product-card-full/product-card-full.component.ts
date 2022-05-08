@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Producto } from 'src/app/tinpy-public/interfaces/productos/productos-by-name-response';
+import { Producto } from 'src/app/tinpy-public/interfaces/productos/productos-by-name-response.interface';
 import { environment } from 'src/environments/environment';
 
 @Component({

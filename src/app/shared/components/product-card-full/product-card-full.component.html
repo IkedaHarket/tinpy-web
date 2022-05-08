@@ -6,11 +6,10 @@
     <div class="product-card-full__info">
       <h6>{{producto.nombre}}</h6>
       <span class="c-primary">{{producto.categoria?.nombre || 'Sin categoria'}}</span>
-      <!-- <p>{{producto?.descripcion || ''}}</p> -->
-      <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere atque cum molestiae quibusdam perspiciatis dolores velit ut ipsum? Doloribus impedit tenetur ullam repellat veniam nostrum explicabo modi temporibus aliquam sequi!</p>
+      <p>{{producto?.descripcion || ''}}</p>
     </div>
     <div class="product-card-full__footer">
-      <button class="tinpyButton">
+      <button class="tinpyButton" routerLink="/product/{{producto._id}}">
         Ver Mas...
       </button>
       <span>

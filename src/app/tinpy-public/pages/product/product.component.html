@@ -1,0 +1,36 @@
+<div class="container product-page">
+  <div class=" row product-page__product my-5">
+    <div class="col-12 col-lg-4 product-page__product-img">
+      <span class="tinpy-badge cursor-pointer mb-3">
+          {{dataProduct.negocio?.nombre}}
+      </span>
+      <img src="{{tinpyBackendURL}}/{{dataProduct.imagenPrincipal}}" alt="">
+    </div>
+    <div class="col-12 col-lg-7 product-page__product-info ms-4">
+      <div class="mb-3 product-page__product-info-header">
+          <h5 class="display-5 mt-5">{{dataProduct.nombre}}</h5>
+          <span class="fw-bold">{{dataProduct.categoria?.nombre}}</span>
+      </div>
+      <div class="product-page__product-info-content">
+        <pre>{{dataProduct.descripcion}}</pre>
+      </div>
+      <div class="row justify-content-between product-page__product-info-footer">
+        <span class="col-3 align-middle">{{dataProduct.precio}} CLP</span>
+        <section class="col-3">
+            <div class="product-page__product-info-footer-dislikes">
+              <img src="./assets/imgs/dislike.svg" alt="dislike">
+              <span class="ms-2">{{dataProduct.numeroDislikes || 0}}</span>
+            </div>
+            <div class="product-page__product-info-footer-likes">
+              <img src="./assets/imgs/like.svg" alt="like">
+              <span class="ms-2">{{dataProduct.numeroLikes  || 0}}</span>
+            </div>
+        </section>
+      </div>
+      <button class="mt-4 tinpyButton" routerLink="/search">Volver</button>
+    </div>
+  </div>
+  <h6 class="display-5">Productos Relacionados</h6>
+
+</div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Producto } from '../../interfaces/productos/productos-by-name-response';
+import { Producto } from '../../interfaces/productos/productos-by-name-response.interface';
 
 @Component({
   selector: 'app-search',
