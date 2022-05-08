@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
       }
     })
     localStorage.setItem('searchQuery',JSON.stringify(this.productos))
-    console.log(this.productos);
   }
 
 }

@@ -25,8 +25,8 @@
   </div>
 
 
-  <div class="search-page__productos" *ngIf="productos.length > 0">
-    <div class="search-page__productos-item" *ngFor="let producto of productos">
+  <div class="search-page__productos mt-5" *ngIf="productos.length > 0">
+    <div class="search-page__productos-item mb-4" *ngFor="let producto of productos">
       <app-product-card-full [producto]="producto"></app-product-card-full>
     </div>
   </div>
