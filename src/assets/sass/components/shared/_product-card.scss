@@ -1,0 +1,18 @@
+.product-card{
+    width: 400px;
+    height: 500px;
+    background: $white;
+    filter: $drop-shadow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .product-card__title{
+        font-size: 24px;
+    }
+    img{
+        width: 350px;
+        height: 300px;
+        object-fit: cover;
+    }
+}

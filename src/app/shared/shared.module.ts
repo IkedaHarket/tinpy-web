@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrMsgDirective } from './directives/err-msg.directive';
 import { ProductCardFullComponent } from './components/product-card-full/product-card-full.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ProductCardFullComponent } from './components/product-card-full/product
     ErrMsgDirective,
     HeaderComponent,
     FooterComponent,
-    ProductCardFullComponent
+    ProductCardFullComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ProductCardFullComponent } from './components/product-card-full/product
     ErrMsgDirective,
     HeaderComponent,
     FooterComponent,
-    ProductCardFullComponent
+    ProductCardFullComponent,
+    ProductCardComponent
   ],
 })
 export class SharedModule { }

@@ -30,7 +30,14 @@
       <button class="mt-4 tinpyButton" routerLink="/search">Volver</button>
     </div>
   </div>
-  <h6 class="display-5">Productos Relacionados</h6>
-
+  <h6 class="display-5 mb-4">Productos Relacionados</h6>
+  <section class="row-products">
+    <div *ngFor="let productoRelacionado of productsRelacionados.productos">
+      <app-product-card
+      *ngIf="productoRelacionado._id != idProducto"
+      [producto] = productoRelacionado
+    ></app-product-card>
+    </div>
+  </section>
 </div>
 
