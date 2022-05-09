@@ -28,6 +28,11 @@
         margin: 5px 0;
         font-size: 22px;
       }
+      p{
+        display: block;
+        max-height: 100px;
+        overflow-y: auto;
+      }
     }
     .product-card-full__footer{
       display: flex;

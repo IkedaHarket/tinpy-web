@@ -1,7 +1,7 @@
 <div class="product-card">
     <img class="mb-2" src="{{tinpyBackendURL}}/{{producto.imagenPrincipal}}" [alt]="producto.nombre">
-    <span class="product-card__title">{{producto.nombre}}</span>
+    <span class="text-truncate product-card__title" style="max-width: 340px;">{{producto.nombre}}</span>
     <span class="c-primary fw-bold mb-2">{{producto.categoria?.nombre}}</span>
-    <span class="fw-bold mb-2">{{producto.precio}} CLP</span>
+    <span class="fw-bold mb-2 product-card__precio">{{producto.precio}} CLP</span>
     <button class="tinpyButton" routerLink="/product/{{producto._id}}">Ver Mas...</button>
 </div>

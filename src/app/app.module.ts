@@ -9,6 +9,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { PrimengModule } from './primeng/primeng.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
+    PrimengModule,
     SharedModule
   ],
   providers: [],

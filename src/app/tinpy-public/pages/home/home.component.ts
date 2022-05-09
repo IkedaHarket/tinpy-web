@@ -25,9 +25,11 @@ export class HomeComponent {
   click(){
     if(this.formSearch.invalid) return
     const {search} = this.formSearch.value
-    this.productosService.getProductosByName(search).subscribe({
+
+    this.productosService.getProductosByNamePaginates(search).subscribe({
       next:({productos})=>{
-        if(productos!.length == 0){
+        console.log(productos);
+        if(productos!.docs?.length == 0){
           Swal.fire({
             'title': 'No se encontraron productos para esta busqueda',
             'icon': 'error',
@@ -36,7 +38,8 @@ export class HomeComponent {
           })
           return
         }
-        this.router.navigateByUrl('/search',{ state: { productos } })
+        localStorage.setItem('searchQuery',this.formSearch.get('search')?.value)
+        this.router.navigateByUrl('/search',{ state: { productos} })
       },
       error:(err)=> console.log(err),
     });

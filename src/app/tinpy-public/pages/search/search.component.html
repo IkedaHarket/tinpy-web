@@ -1,5 +1,10 @@
 
+
 <div class="search-page">
+
+  <div class="search-page__paginator">
+    <p-paginator class="tinpy-paginator" [rows]="productos.limit || 5" [totalRecords]="productos.totalDocs || 0" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
 
   <div class="custom-filter">
     <h6>Filtrar</h6>
@@ -24,10 +29,13 @@
     </div>
   </div>
 
-
-  <div class="search-page__productos mt-5" *ngIf="productos.length > 0">
-    <div class="search-page__productos-item mb-4" *ngFor="let producto of productos">
+  <div class="search-page__productos mt-5">
+    <div class="search-page__productos-item mb-4" *ngFor="let producto of productos!.docs">
       <app-product-card-full [producto]="producto"></app-product-card-full>
     </div>
   </div>
+  <div class="search-page__paginator b-0">
+    <p-paginator class="tinpy-paginator" [rows]="productos.limit || 5" [totalRecords]="productos.totalDocs || 0" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+
 </div>

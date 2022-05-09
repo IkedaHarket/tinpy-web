@@ -6,6 +6,12 @@
   padding: 20px 85px;
   gap: 50px;
   position: relative;
+  .search-page__paginator{
+    position: absolute;
+  }
+  .search-page__paginator.b-0{
+    bottom: 0;
+  }
   .search-page__productos{
     width: 50vw;
   }

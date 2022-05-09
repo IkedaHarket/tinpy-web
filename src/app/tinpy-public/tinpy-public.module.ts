@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './pages/product/product.component';
+import { PrimengModule } from '../primeng/primeng.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ProductComponent } from './pages/product/product.component';
     TinpyPublicRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    PrimengModule,
   ]
 })
 export class TinpyPublicModule { }

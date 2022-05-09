@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Producto } from '../../interfaces/productos/productos-by-name-response.interface';
+import Swal from 'sweetalert2';
+import { Productos } from '../../interfaces/productos/productos-by-name-paginate-response.interface';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-search',
@@ -9,19 +10,45 @@ import { Producto } from '../../interfaces/productos/productos-by-name-response.
 })
 export class SearchComponent implements OnInit {
 
-  productos : Producto[] = [];
+  productos : Productos = {};
+  searchQuery: string = '';
+  page:number = 1;
+  limit: number = 5;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private productosService: ProductosService,
+    ) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe( ()=> {
-      if(!window.history.state.productos){
-        this.productos = JSON.parse(localStorage.getItem('searchQuery') || '[]');
-      }else{
-        this.productos = window.history.state.productos
-      }
+    this.searchQuery = localStorage.getItem('searchQuery') || 'a';
+
+    if(window.history.state.productos){
+      this.productos = window.history.state.productos
+    }else{
+      this.getProductsByName();
+    }
+
+  }
+  getProductsByName(){
+    this.productosService.getProductosByNamePaginates(this.searchQuery,this.page,this.limit).subscribe({
+      next: ({productos})=>{
+        if(productos!.docs?.length == 0){
+          Swal.fire({
+            'title': 'No se encontraron productos para esta busqueda',
+            'icon': 'error',
+            'showConfirmButton': false,
+            'timer': 2000
+          })
+          return
+        }
+        this.productos = productos || {};
+      },
+      error:(err)=> console.log(err),
     })
-    localStorage.setItem('searchQuery',JSON.stringify(this.productos))
   }
 
+  paginate(event:any) {
+    this.page = event.page+1;
+    this.getProductsByName()
+  }
 }
