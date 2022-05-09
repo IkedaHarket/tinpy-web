@@ -23,6 +23,7 @@
       white-space: -pre-wrap;      /* Opera 4-6 */
       white-space: -o-pre-wrap;    /* Opera 7 */
       word-wrap: break-word;
+      font-family: 'K2D', sans-serif;
     }
   }
   .product-page__product-info-footer{
@@ -44,17 +45,23 @@
       }
       .product-page__product-info-footer-dislikes{
         position: relative;
-        top: 11px;
+        top: 8px;
+        img{
+          width: 40px;
+        }
         span{
           position: relative;
-          top: -4px;
+          top: -2px;
         }
       }
       .product-page__product-info-footer-likes{
         position: relative;
+        img{
+          width: 40px;
+        }
         span{
           position: relative;
-          top: 7px;
+          top: 5px;
         }
       }
     }

@@ -28,8 +28,10 @@ a:hover{
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px;
   flex-wrap: wrap;
+  .product-card{
+    margin: 10px;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -41,6 +43,7 @@ a:hover{
   border: 0px none #ffffff;
   border-radius: 50px;
 }
+
 ::-webkit-scrollbar-track {
   background: #666666;
   border: 0px none #ffffff;
