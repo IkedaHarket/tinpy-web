@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Productos } from '../../interfaces/productos/productos-by-name-paginate-response.interface';
-import { ProductosService } from '../../services/productos.service';
+import { Productos } from 'src/app/core/interfaces/productos/productos-by-name-paginate-response.interface';
+import { ProductosService } from 'src/app/core/services/productos/productos.service';
 
 @Component({
   selector: 'app-search',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { ProductosService } from '../../services/productos.service';
-import { ProductByIDResponse } from '../../interfaces/productos/product-by-id-response.interface';
+import { ProductosService } from 'src/app/core/services/productos/productos.service';
+import { ProductByIDResponse } from 'src/app/core/interfaces/productos/product-by-id-response.interface';
 import { environment } from 'src/environments/environment';
-import { ProductosByNameRes } from '../../interfaces/productos/productos-by-name-response.interface';
+import { ProductosByNameRes } from 'src/app/core/interfaces/productos/productos-by-name-response.interface';
 
 @Component({
   selector: 'app-product',
@@ -35,8 +35,8 @@ export class ProductComponent implements OnInit {
         })
       })
     })
-    
-    
+
+
   }
 
 }

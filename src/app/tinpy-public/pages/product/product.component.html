@@ -1,7 +1,7 @@
 <div class="container product-page">
   <div class=" row product-page__product my-5">
     <div class="col-12 col-lg-4 product-page__product-img">
-      <span class="tinpy-badge cursor-pointer mb-3">
+      <span class="tinpy-badge cursor-pointer mb-3" routerLink="/shop/{{dataProduct.negocio?._id || ''}}" >
           {{dataProduct.negocio?.nombre}}
       </span>
       <img src="{{tinpyBackendURL}}/{{dataProduct.imagenPrincipal}}" alt="">

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Producto as ProductoPaginate  } from 'src/app/tinpy-public/interfaces/productos/productos-by-name-paginate-response.interface';
-import { Producto } from 'src/app/tinpy-public/interfaces/productos/productos-by-name-response.interface';
+import { Producto as ProductoPaginate  } from 'src/app/core/interfaces/productos/productos-by-name-paginate-response.interface';
+import { Producto } from 'src/app/core/interfaces/productos/productos-by-name-response.interface';
 import { environment } from 'src/environments/environment';
 
 @Component({

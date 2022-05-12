@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
-import { ProductosPaginateRes } from '../interfaces/productos/productos-pag-response.interface';
-import { ProductosByNameRes } from '../interfaces/productos/productos-by-name-response.interface';
-import { ProductByIDResponse } from '../interfaces/productos/product-by-id-response.interface';
-import { ProductsByNamePaginateResponse } from '../interfaces/productos/productos-by-name-paginate-response.interface';
+import { ProductosPaginateRes } from '../../interfaces/productos/productos-pag-response.interface';
+import { ProductosByNameRes } from '../../interfaces/productos/productos-by-name-response.interface';
+import { ProductByIDResponse } from '../../interfaces/productos/product-by-id-response.interface';
+import { ProductsByNamePaginateResponse } from '../../interfaces/productos/productos-by-name-paginate-response.interface';
 
 @Injectable({
   providedIn: 'root'

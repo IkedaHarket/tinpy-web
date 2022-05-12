@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
 
-import { ProductosService } from '../../services/productos.service';
+import { ProductosService } from 'src/app/core/services/productos/productos.service';
 
 @Component({
   selector: 'app-home',
