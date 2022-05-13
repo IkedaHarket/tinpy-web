@@ -1,1 +1,26 @@
-<p>shop works!</p>
+<!-- {{negocio | json}} -->
+<div class="shop-page">
+  <div class="shop-page__banner">
+    <img src="https://i.pinimg.com/originals/7d/98/84/7d98840fdff1b2e7cd508cc7f3a17403.jpg" alt="">
+  </div>
+  <div class="shop-page__header">
+    <img src="{{tinpyBackendURL}}/{{negocio.negocios?.img}}" [alt]="negocio.negocios?.nombre">
+    <div class="tinpy-badge display-6 shop-page__header-title">
+      {{negocio.negocios?.nombre}}
+    </div>
+    <span class="c-primary">
+      ({{negocio.negocios?.tipoNegocio?.nombre?.toUpperCase()}})
+    </span>
+    <div class="shop-page__header-stars">
+      {{promedioEstrellas}}
+    </div>
+  </div>
+  <div class="shop-page__descripcion">
+    <p>
+      <!-- {{negocio.negocios?.descripcion}} -->
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut nemo sunt temporibus, fuga dignissimos quibusdam voluptatem repudiandae ratione? Numquam excepturi vero rem reprehenderit doloribus modi natus maiores eius, corporis ipsum?
+    </p>
+  </div>
+</div>

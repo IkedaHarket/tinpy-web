@@ -4,7 +4,7 @@
       <span class="tinpy-badge cursor-pointer mb-3" routerLink="/shop/{{dataProduct.negocio?._id || ''}}" >
           {{dataProduct.negocio?.nombre}}
       </span>
-      <img src="{{tinpyBackendURL}}/{{dataProduct.imagenPrincipal}}" alt="">
+      <img src="{{tinpyBackendURL}}/{{dataProduct.imagenPrincipal}}" alt="{{dataProduct.nombre}}">
     </div>
     <div class="col-12 col-lg-7 product-page__product-info ms-4">
       <div class="mb-3 product-page__product-info-header">
