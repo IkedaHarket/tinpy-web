@@ -1,0 +1,15 @@
+<form class="row mb-4">
+  <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+    <input type="text" class="inputCustomField bottomLine" placeholder="Buscar..." #input>
+  </div>
+</form>
+<div class="search-page__productos-item mb-4" *ngFor="let producto of productos!.docs">
+  <app-product-card-full [producto]="producto"></app-product-card-full>
+</div>
+<p *ngIf="productos.docs?.length == 0">
+  Lo sentimos, no tenemos lo que estas buscando :c
+</p>
+<div class="search-page__paginator b-0">
+  <p-paginator class="tinpy-paginator" [rows]="productos.limit || 5" [totalRecords]="productos.totalDocs || 0"
+    (onPageChange)="paginate($event)"></p-paginator>
+</div>

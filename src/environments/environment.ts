@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   tinpyBackendURL : 'http://localhost:4000',
+  mapboxToken: 'pk.eyJ1IjoidGlucHkiLCJhIjoiY2wzNmVnODl4MTZuajNkcGF5c3Rienc1eCJ9.sVJF8gqZI405DDwIOE7Kwg'
 };
 
 /*

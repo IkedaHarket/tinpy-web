@@ -31,10 +31,83 @@
     }
     .shop-page__header-title{
       font-weight: 600;
+      min-width: 250px;
+      max-width: 320px;
+      text-align: center;
+      height: 56px;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .shop-page__header-stars{
+      height: 50px;
+      img{
+        object-fit: contain;
+        height: 100%;
+        width: auto;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+      }
     }
   }
   .shop-page__descripcion{
     margin: 20px 70px 0 400px;
+    position: absolute;
+  }
+  .shop-page__direccion{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 350px;
+    width: 90%;
+    flex-wrap: wrap;
+    margin: auto;
+    border: 2px solid $primary;
+    margin-top: 290px;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    .shop-page__direccion-mapa{
+      justify-self: flex-start;
+      width: 400px;
+      height: 100%;
+    }
+    .shop-page__direccion-horario{
+      width: 220px;
+      position: absolute;
+      left: calc(50% - 120px);
+      h6{
+      font-size: 24px;
+      }
+      text-align: center;
+    }
+}
+}
+@media screen and (max-width:1320px) {
+  .shop-page{
+    position: relative;
+    .shop-page__descripcion{
+      margin: 20px 70px 0 400px;
+    }
+    .shop-page__direccion{
+      gap: 30px;
+      display: flex;
+      justify-content: space-around;
+      height: auto;
+      margin-top: 320px;
+      .shop-page__direccion-mapa{
+        height: 350px;
+      }
+      .shop-page__direccion-horario{
+        position: relative;
+        left: 0;
+      }
+  }
   }
 }
 @media screen and (max-width:910px) {
@@ -44,8 +117,14 @@
       margin-left: -125px;
     }
     .shop-page__descripcion{
-      margin: 250px 20px;
+      margin: 280px 20px 0 20px;
       text-align: center;
+      position: relative;
+    }
+    .shop-page__direccion{
+      justify-content: center;
+      gap: 20px;
+      margin-top: 0;
     }
   }
 }

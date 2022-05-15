@@ -7,6 +7,7 @@ import { ProductosPaginateRes } from '../../interfaces/productos/productos-pag-r
 import { ProductosByNameRes } from '../../interfaces/productos/productos-by-name-response.interface';
 import { ProductByIDResponse } from '../../interfaces/productos/product-by-id-response.interface';
 import { ProductsByNamePaginateResponse } from '../../interfaces/productos/productos-by-name-paginate-response.interface';
+import { ProductosByIdNegocioResponse } from '../../interfaces/productos/productos-by-negocio-paginate-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,11 @@ export class ProductosService {
   }
   getProductById(id:string):Observable<ProductByIDResponse>{
     return this.http.get<ProductByIDResponse>(`${this._tinpyBackendURL}/api/productos/${id}`)
+  }
+  getProductsByIdNegocioPaginate(id:string,page:number = 1,limit:number = 5):Observable<ProductosByIdNegocioResponse>{
+    return this.http.get<ProductosByIdNegocioResponse>(`${this._tinpyBackendURL}/api/productos/negocio-productos-paginate/${id}?page=${page}&limit=${limit}`)
+  }
+  getProductsByIdNegocioAndNamePaginate(id:string,name:string,page:number = 1,limit:number = 5):Observable<ProductosByIdNegocioResponse>{
+    return this.http.get<ProductosByIdNegocioResponse>(`${this._tinpyBackendURL}/api/productos/negocio-productos-paginate/${id}/${name}?page=${page}&limit=${limit}`)
   }
 }
