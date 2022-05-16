@@ -53,8 +53,11 @@
     }
   }
   .shop-page__descripcion{
-    margin: 20px 70px 0 400px;
+    margin: 105px 70px 0 400px;
     position: absolute;
+    p{
+    font-weight: 600;
+    }
   }
   .shop-page__direccion{
     position: relative;
@@ -92,7 +95,7 @@
   .shop-page{
     position: relative;
     .shop-page__descripcion{
-      margin: 20px 70px 0 400px;
+      margin: 105px 70px 0 400px;
     }
     .shop-page__direccion{
       gap: 30px;
