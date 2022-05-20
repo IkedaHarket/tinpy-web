@@ -11,6 +11,7 @@ import { MiniMapaComponent } from './components/mini-mapa/mini-mapa.component';
 import { ProductsByNegocioViewComponent } from './components/products-by-negocio-view/products-by-negocio-view.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormComentarioNegocioComponent } from './components/form-comentario-negocio/form-comentario-negocio.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductCardFullComponent,
     ProductCardComponent,
     MiniMapaComponent,
-    ProductsByNegocioViewComponent
+    ProductsByNegocioViewComponent,
+    FormComentarioNegocioComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductCardFullComponent,
     ProductCardComponent,
     MiniMapaComponent,
-    ProductsByNegocioViewComponent
+    ProductsByNegocioViewComponent,
+    FormComentarioNegocioComponent
   ],
 })
 export class SharedModule { }
