@@ -1,22 +1,18 @@
-import { Errors, Negocio,Categoria } from '../';
-export interface ProductByIDResponse {
+import { Categoria,Negocio } from "../";
+
+export interface Producto {
+  dislikes?:        any[];
   _id?:             string;
-  negocio?:         Negocio;
+  negocio?:         string | Negocio;
   nombre?:          string;
   precio?:          number;
   descripcion?:     string;
   numeroLikes?:     number;
-  likes?:           string[];
-  numeroDislikes?:  number;
-  dislikes?:        string[];
+  likes?:           any[];
   estado?:          boolean;
   imagenPrincipal?: string;
   categoria?:       Categoria;
   createdAt?:       Date;
   updatedAt?:       Date;
   __v?:             number;
-  ok?:              boolean;
-  errors?:          Errors;
 }
-
-

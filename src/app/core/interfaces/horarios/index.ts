@@ -1,0 +1,1 @@
+export { Horario } from './horario';

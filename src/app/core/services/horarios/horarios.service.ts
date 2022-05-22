@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HorarioByIDNegocioResponse } from '../../interfaces/horarios/horario-by-id-negocio-response.interface';
 import { Observable } from 'rxjs';
+import { Horario } from 'src/app/core/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class HorariosService {
 
   constructor(private http: HttpClient) { }
 
-  getHorariosById(id:string):Observable<HorarioByIDNegocioResponse>{
-    return this.http.get<HorarioByIDNegocioResponse>(`${this._tinpyBackendURL}/api/horarios/negocio/${id}`)
+  getHorariosById(id:string):Observable<Horario>{
+    return this.http.get<Horario>(`${this._tinpyBackendURL}/api/horarios/negocio/${id}`)
   }
 }

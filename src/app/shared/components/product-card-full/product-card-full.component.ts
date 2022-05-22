@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Producto as ProductoPaginate  } from 'src/app/core/interfaces/productos/productos-by-name-paginate-response.interface';
-import { Producto } from 'src/app/core/interfaces/productos/productos-by-name-response.interface';
+
+import { Producto } from 'src/app/core/interfaces';
 import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-product-card-full',
@@ -13,6 +14,6 @@ export class ProductCardFullComponent {
   tinpyBackendURL: string = environment.tinpyBackendURL;
 
   @Input()
-  producto: Producto | ProductoPaginate = {};
+  producto: Producto = {};
 
 }

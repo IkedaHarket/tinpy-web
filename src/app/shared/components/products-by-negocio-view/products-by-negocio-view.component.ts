@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ProductosService } from '../../../core/services/productos/productos.service';
-import { Productos } from '../../../core/interfaces/productos/productos-by-negocio-paginate-response.interface';
 import { filter, fromEvent, debounceTime, distinctUntilChanged } from 'rxjs';
+import { ProductosPages } from 'src/app/core/interfaces';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class ProductsByNegocioViewComponent implements OnInit,AfterViewInit {
   @Input()
   idNegocio:string = '';
   loading:boolean = true;
-  productos: Productos = {}
+  productos: ProductosPages = {}
   page:number = 1;
   limit: number = 4;
 

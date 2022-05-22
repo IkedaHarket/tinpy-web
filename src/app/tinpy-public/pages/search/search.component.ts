@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Productos } from 'src/app/core/interfaces/productos/productos-by-name-paginate-response.interface';
 import { ProductosService } from 'src/app/core/services/productos/productos.service';
+import { ProductosPages } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +10,7 @@ import { ProductosService } from 'src/app/core/services/productos/productos.serv
 })
 export class SearchComponent implements OnInit {
 
-  productos : Productos = {};
+  productos : ProductosPages = {};
   searchQuery: string = '';
   page:number = 1;
   limit: number = 5;

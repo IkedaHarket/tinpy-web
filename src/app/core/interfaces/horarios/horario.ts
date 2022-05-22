@@ -1,4 +1,4 @@
-export interface HorarioByIDNegocioResponse {
+export interface Horario {
   ok?:               string;
   _id?:              string;
   negocio?:          string;
