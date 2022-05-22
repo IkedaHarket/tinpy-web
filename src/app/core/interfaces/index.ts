@@ -13,3 +13,4 @@ export { Direccion } from './direccion';
 export { Usuario } from './users';
 export { TipoNegocio,Negocio,NegocioByIDResponse } from './negocios';
 export { Errors, Error } from './errors';
+export { Perfil } from './perfiles';

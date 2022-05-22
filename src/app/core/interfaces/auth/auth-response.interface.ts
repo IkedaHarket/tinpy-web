@@ -1,4 +1,4 @@
-import { Errors, Usuario } from '../';
+import { Errors, Usuario } from '..';
 
 export interface AuthResponse {
   ok?:     boolean;

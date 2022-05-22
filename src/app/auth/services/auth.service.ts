@@ -63,11 +63,18 @@ export class AuthService {
             }
             return resp.ok!;
           }),
-          catchError(err=> of(false))
+          catchError(err=> {
+            this._usuario = {
+              correo : undefined,
+              uid  : undefined
+            }
+            return of(false)
+          })
         )
   }
 
   logout(){
     localStorage.removeItem('token');
+    this._usuario = {}
   }
 }
