@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad, Route,  UrlSegment, Router } from '@angular/router';
+import { CanActivate, CanLoad, Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ValidarTokenGuard implements CanActivate, CanLoad {
+export class ValidarVipGuard implements CanActivate, CanLoad {
 
   constructor(
     private authService: AuthService,

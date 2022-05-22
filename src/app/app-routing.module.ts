@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ValidarTokenGuard } from './auth/guards/validar-token.guard';
+import { ValidarVipGuard } from './auth/guards/vip/validar-vip.guard';
+import { ValidarAuthGuard } from './auth/guards/auth/validar-auth.guard';
 
 const routes: Routes = [
   {
@@ -9,13 +10,15 @@ const routes: Routes = [
   },
   {
     path:'auth',
-    loadChildren: ()=>import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: ()=>import('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [ValidarAuthGuard],
+    canLoad: [ValidarAuthGuard]
   },
   {
     path:'vip',
     loadChildren: ()=> import('./tinpy-private/tinpy-private.module').then(m => m.TinpyPrivateModule),
-    canActivate: [ValidarTokenGuard],
-    canLoad: [ValidarTokenGuard]
+    canActivate: [ValidarVipGuard],
+    canLoad: [ValidarVipGuard]
   },
   { path:'**', redirectTo:'' }
 ];

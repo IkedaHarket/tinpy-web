@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ValidarTokenGuard } from './validar-token.guard';
+import { ValidarAuthGuard } from './validar-auth.guard';
 
-describe('ValidarTokenGuard', () => {
-  let guard: ValidarTokenGuard;
+describe('ValidarAuthGuard', () => {
+  let guard: ValidarAuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(ValidarTokenGuard);
+    guard = TestBed.inject(ValidarAuthGuard);
   });
 
   it('should be created', () => {
