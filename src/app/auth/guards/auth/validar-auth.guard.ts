@@ -14,18 +14,16 @@ export class ValidarAuthGuard implements CanActivate, CanLoad {
     ){}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    const uid = this.authService.usuario?.uid || false;
+    const uid = this.authService.perfil.usuario?.uid || false;
     const token = localStorage.getItem('token') || false;
-    console.log(token,uid);
       if(uid || token){
         this.router.navigateByUrl('/vip')
       }
     return true;
   }
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
-      const uid = this.authService.usuario?.uid || false;
+      const uid = this.authService.perfil.usuario?.uid || false;
       const token = localStorage.getItem('token')|| false;
-      console.log(token,uid);
         if(uid || token){
           this.router.navigateByUrl('/vip')
         }

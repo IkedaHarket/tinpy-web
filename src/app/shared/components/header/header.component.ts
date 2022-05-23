@@ -14,34 +14,23 @@ export class HeaderComponent implements OnInit,DoCheck {
 
   constructor(
     private authService:AuthService,
-    private perfilesService:PerfilesService,
     private router:Router
     ) { }
 
   tinpyBackendURL: string = environment.tinpyBackendURL;
   perfil: Perfil = {}
-  searchProfile:boolean = true;
 
   ngDoCheck(): void {
-
-    if(this.authService.usuario.uid && this.searchProfile){
-      this.perfil.usuario = {...this.authService.usuario}
-      this.searchProfile = false;
-      this.perfilesService.getPerfilByUserID(this.perfil.usuario.uid!).subscribe({
-        next: (perfil)=> this.perfil = perfil,
-        error:()=> {console.log}
-        })
-    }
-    if(!this.authService.usuario.uid){
-      this.setDefaultPerfil();
+    this.setDefaultPerfil();
+    if(this.authService.perfil.usuario?.uid){
+      this.perfil = this.authService.perfil
     }
   }
   ngOnInit(): void {
-
   }
+
   logout(){
     this.authService.logout();
-    this.searchProfile = true;
     this.setDefaultPerfil();
     this.router.navigateByUrl('/auth')
   }

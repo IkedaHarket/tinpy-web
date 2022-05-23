@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PerfilesService } from 'src/app/core/services/perfiles/perfiles.service';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,6 +20,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService:AuthService,
     private router:Router,
+    private perfilesService: PerfilesService,
     ){ }
 
     submit(){
@@ -27,9 +29,7 @@ export class LoginComponent {
       const {correo,password} = this.formLogin.value;
 
       this.authService.postLogin(correo,password).subscribe({
-        next: (res)=>{
-          if(res.ok) this.router.navigateByUrl('/vip')
-        },
+        next: () => this.router.navigateByUrl('/vip'),
         error: ({error})=> {
           Swal.fire({
             'title': error.errors[0].msg,

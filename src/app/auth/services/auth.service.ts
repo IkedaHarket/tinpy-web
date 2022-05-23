@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { AuthResponse,Usuario } from 'src/app/core/interfaces';
+import { AuthResponse,Perfil } from 'src/app/core/interfaces';
+import { PerfilesService } from 'src/app/core/services/perfiles/perfiles.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,19 @@ import { AuthResponse,Usuario } from 'src/app/core/interfaces';
 export class AuthService {
 
   private _tinpyBackendURL: string = environment.tinpyBackendURL;
-  private _usuario        : Usuario = {};
+  private _perfil        : Perfil = {};
 
-  get usuario(){
-    return {...this._usuario};
+  get perfil(){
+    return {...this._perfil};
+  }
+  set perfil(perfil : Perfil) {
+    this._perfil = perfil;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private perfilesService:PerfilesService,
+    ) {
     if (!environment.production) console.log("backend tinpy", this._tinpyBackendURL);
   }
   postRegisterUser(correo:string, password:string):Observable<AuthResponse>{
@@ -25,10 +32,11 @@ export class AuthService {
       tap( resp => {
         if(resp.ok){
           localStorage.setItem('token',resp.token!);
-          this._usuario = {
+          this._perfil.usuario = {
             correo : resp.usuario!.correo,
             uid  : resp.usuario!.uid
           }
+          this.getPerfil(resp.usuario?.uid!)
         }
       })
     );
@@ -40,10 +48,11 @@ export class AuthService {
           tap( resp => {
             if(resp.ok && resp.usuario?.estado){
               localStorage.setItem('token',resp.token!);
-              this._usuario = {
+              this._perfil.usuario = {
                 correo : resp.usuario!.correo,
                 uid  : resp.usuario!.uid
               }
+              this.getPerfil(resp.usuario?.uid!)
             }
           })
         )
@@ -57,14 +66,15 @@ export class AuthService {
         .pipe(
           map(resp=>{
             localStorage.setItem('token',resp.token!);
-            this._usuario = {
+            this._perfil.usuario = {
               correo : resp.usuario?.correo,
               uid  : resp.usuario?.uid
             }
+            this.getPerfil(resp.usuario?.uid!)
             return resp.ok!;
           }),
           catchError(err=> {
-            this._usuario = {
+            this._perfil.usuario = {
               correo : undefined,
               uid  : undefined
             }
@@ -72,9 +82,16 @@ export class AuthService {
           })
         )
   }
-
   logout(){
     localStorage.removeItem('token');
-    this._usuario = {}
+    this._perfil = {}
+  }
+
+  private getPerfil(uid:string){
+    this.perfilesService.getPerfilByUserID(uid).subscribe({
+      next: (perfil)=> {
+        this.perfil = perfil;
+      },
+      error:()=> console.log})
   }
 }
