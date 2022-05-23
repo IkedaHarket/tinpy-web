@@ -1,5 +1,6 @@
 
 export const numberToStars = (number:number) =>{
+  
   const mediaStar = './assets/imgs/halfStar.svg'
   const fullStar = './assets/imgs/fullStar.svg'
   const clearStar = './assets/imgs/clearStar.svg'

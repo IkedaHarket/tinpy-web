@@ -32,7 +32,7 @@ export class LoginComponent {
         next: () => this.router.navigateByUrl('/vip'),
         error: ({error})=> {
           Swal.fire({
-            'title': error.errors[0].msg,
+            'title': error?.errors[0].msg,
             'icon': 'error',
             'showConfirmButton': false,
             'timer': 1500

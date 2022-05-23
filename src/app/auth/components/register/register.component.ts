@@ -5,6 +5,7 @@ import   Swal from 'sweetalert2';
 
 import { ValidatorService } from 'src/app/shared/validators/validator.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,16 +23,17 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private authService:AuthService,
-    private validator:ValidatorService
+    private validator:ValidatorService,
+    private router:Router
     ){ }
   submit(){
     if(this.formRegister.invalid) return
     const {correo,password} = this.formRegister.value;
     this.authService.postRegisterUser(correo,password).subscribe({
-      next: (res)=> console.log('NEXT',res),
-      error: ({error})=> {
+      next: () => this.router.navigateByUrl('/vip'),
+      error: ({errors})=> {
         Swal.fire({
-          'title': error.errors['errors'][0].msg,
+          'title': errors.errors['errors'][0].msg,
           'icon': 'error',
           'showConfirmButton': false,
           'timer': 1500

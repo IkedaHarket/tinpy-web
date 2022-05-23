@@ -33,8 +33,8 @@ export class AuthService {
         if(resp.ok){
           localStorage.setItem('token',resp.token!);
           this._perfil.usuario = {
-            correo : resp.usuario!.correo,
-            uid  : resp.usuario!.uid
+            correo : resp.usuario?.correo || undefined,
+            uid  : resp.usuario?.uid || undefined,
           }
           this.getPerfil(resp.usuario?.uid!)
         }
@@ -49,8 +49,8 @@ export class AuthService {
             if(resp.ok && resp.usuario?.estado){
               localStorage.setItem('token',resp.token!);
               this._perfil.usuario = {
-                correo : resp.usuario!.correo,
-                uid  : resp.usuario!.uid
+                correo : resp.usuario?.correo || undefined,
+                uid  : resp.usuario?.uid || undefined
               }
               this.getPerfil(resp.usuario?.uid!)
             }
@@ -90,7 +90,10 @@ export class AuthService {
   private getPerfil(uid:string){
     this.perfilesService.getPerfilByUserID(uid).subscribe({
       next: (perfil)=> {
-        this.perfil = perfil;
+        if(perfil){
+          console.log(perfil)
+          this.perfil = perfil;
+        }
       },
       error:()=> console.log})
   }
