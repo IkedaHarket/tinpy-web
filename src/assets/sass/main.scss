@@ -18,6 +18,7 @@
 @import './components/shared/product-card';
 @import './components/shared/tinpy-paginator';
 @import './components/shared/form-comentario-negocio';
+@import './components/shared/customTextarea';
 
 @import './components/auth/main-component-page';
 @import './components/auth/slider';
@@ -28,6 +29,9 @@
 @import './components/tinpy-public/search-page';
 @import './components/tinpy-public/product-page';
 @import './components/tinpy-public/shop-page';
+
+@import './components/tinpy-private/profile-page';
+@import './components/tinpy-private/comentario-profile';
 
 
 

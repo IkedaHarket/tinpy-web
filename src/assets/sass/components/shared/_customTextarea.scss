@@ -1,0 +1,12 @@
+.customTextarea{
+  filter: $drop-shadow;
+  -webkit-filter: $drop-shadow;
+  outline: none;
+  padding: 15px;
+  width: 100%;
+  min-height: 250px;
+  resize: none;
+  border: none;
+  overflow: none;
+  border-bottom: 6px solid $primary;
+}

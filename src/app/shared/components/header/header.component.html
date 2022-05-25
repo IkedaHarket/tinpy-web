@@ -8,8 +8,7 @@
     placeholder="Buscar"
   />
   <div class="header__img imgCircular">
-    <img *ngIf="perfil.img" (click)="logout()" class="cursor-pointer" src="{{tinpyBackendURL}}/{{perfil.img}}" alt="Profile">
-    <img *ngIf="!perfil.img" (click)="logout()" class="cursor-pointer" src="{{tinpyBackendURL}}/default.png" alt="Profile">
+    <img (click)="logout()" class="cursor-pointer" src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="Profile">
     <!-- <img routerLink="/auth" class="cursor-pointer" src="https://www.xtrafondos.com/wallpapers/resized/chica-anime-arte-digital-9879.jpg?s=large" alt="Profile"> -->
   </div>
 </header>

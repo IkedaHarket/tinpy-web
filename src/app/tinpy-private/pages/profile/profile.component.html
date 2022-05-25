@@ -1,1 +1,25 @@
-{{perfil | json}}
+<div class="container profile-page">
+  <div class="row mt-5">
+    <div class="col-12 col-lg-6 profile-page__img">
+      <div class="imgCircular">
+        <img src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="">
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <h6 class="fw-bold fs-1">{{perfil.nombre}}</h6>
+      <p>
+        {{perfil.descripcion || '¿Aun no tienes nada que contar? Te estamos esperando :D'}}
+      </p>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <h6 class="display-6 mb-3">
+          ¿Visitaste algun nuevo lugar?
+        </h6>
+      </div>
+      <div class="col-12">
+        <app-comentario-profile></app-comentario-profile>
+      </div>
+    </div>
+  </div>
+</div>

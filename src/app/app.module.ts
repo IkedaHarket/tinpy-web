@@ -13,7 +13,7 @@ import { PrimengModule } from './primeng/primeng.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
