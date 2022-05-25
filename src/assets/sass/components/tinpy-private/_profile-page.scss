@@ -6,3 +6,13 @@
   }
 
 }
+@media screen and (max-width: 991px) {
+  .profile-page{
+    .profile-page__img{
+      margin: auto;
+    }
+    .profile-page__desc{
+      text-align: center;
+    }
+  }
+}
