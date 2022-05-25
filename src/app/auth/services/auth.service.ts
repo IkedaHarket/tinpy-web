@@ -91,7 +91,6 @@ export class AuthService {
     this.perfilesService.getPerfilByUserID(uid).subscribe({
       next: (perfil)=> {
         if(perfil){
-          console.log(perfil)
           this.perfil = perfil;
         }
       },

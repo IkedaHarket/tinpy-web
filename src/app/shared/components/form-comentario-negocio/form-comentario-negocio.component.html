@@ -2,7 +2,8 @@
 <form class="form-comentario-negocio" [formGroup]="formComentario">
   <div class="row align-items-center justify-content-center justify-content-md-between">
     <div class="col-12 col-lg-3 imgCircular">
-      <img routerLink="/auth" class="cursor-pointer" src="https://www.xtrafondos.com/wallpapers/resized/chica-anime-arte-digital-9879.jpg?s=large" alt="Profile">
+      <img *ngIf="perfil.img" src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="profile">
+      <img *ngIf="!perfil.img" routerLink="/auth" src="https://www.xtrafondos.com/wallpapers/resized/chica-anime-arte-digital-9879.jpg?s=large" alt="profile">
     </div>
     <div class="col-12 col-lg-6 position-relative">
       <label for="titleComentario" class="labelTitulo">Ikeda Harket</label>
@@ -24,7 +25,7 @@
       <select class="select-input-custom" formControlName="animo">
         <option value="#" selected>Ánimo</option>
       </select>
-    </div>
+    </div>{{perfil | json}}
   </div>
   <textarea class="customTextarea mt-4 mb-3" placeholder="Escribe tu reseña aquí..." formControlName="coment"></textarea>
   <div class="row">

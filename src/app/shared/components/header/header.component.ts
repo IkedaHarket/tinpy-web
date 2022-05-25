@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit,DoCheck {
     }
   }
   ngOnInit(): void {
+    this.perfil = this.authService.perfil;
   }
 
   logout(){

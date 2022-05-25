@@ -1,5 +1,10 @@
-<app-header></app-header>
-<div class="custom-container">
-  <router-outlet></router-outlet>
+<div *ngIf="loading">
+  CARGANDO
 </div>
-<app-footer></app-footer>
+<div *ngIf="!loading">
+  <app-header></app-header>
+    <div class="custom-container">
+      <router-outlet></router-outlet>
+    </div>
+  <app-footer></app-footer>
+</div>
