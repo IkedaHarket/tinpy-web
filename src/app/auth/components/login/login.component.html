@@ -31,7 +31,8 @@
         </span>
     </div>
 
-    <button class="tinpyButton" (click)="submit()">
+    <button class="tinpyButton" (click)="submit()" [disabled]="formLogin.invalid"
+    [class.disabled]="formLogin.invalid">
       Iniciar Sesion
     </button>
   </form>

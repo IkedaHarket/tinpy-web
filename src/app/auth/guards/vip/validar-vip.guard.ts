@@ -22,7 +22,6 @@ export class ValidarVipGuard implements CanActivate, CanLoad {
       );
   }
   canLoad(): Observable<boolean> | boolean {
-    console.log('canLoad')
     return this.authService.validarToken()
       .pipe(
         tap(valid =>{

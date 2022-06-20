@@ -1,0 +1,18 @@
+
+    <img class="cursor-pointer" src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="Profile" (click)="toggleActive()">
+<section class="container bg-light menuHeader" [class.active]="active">
+  <div class="row">
+    <div class="col-12 menuHeader__item" routerLink="/vip/perfil">
+      Mi Perfil
+    </div>
+    <div class="col-12 menuHeader__item">
+      Mi Negocio
+    </div>
+    <div class="col-12 menuHeader__item">
+      Crear Producto
+    </div>
+    <div class="col-12 menuHeader__item" (click)="emitLogout()">
+      Salir
+    </div>
+  </div>
+</section>

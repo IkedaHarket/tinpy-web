@@ -45,9 +45,14 @@
         >
       </span>
     </div>
-
-    <button class="tinpyButton" (click)="submit()">
+    <button
+      class="tinpyButton"
+      (click)="submit()"
+      [disabled]="formRegister.invalid"
+      [class.disabled]="formRegister.invalid"
+       >
       Crear Cuenta
     </button>
   </form>
 </div>
+

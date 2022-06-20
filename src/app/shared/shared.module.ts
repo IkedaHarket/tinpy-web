@@ -12,6 +12,7 @@ import { ProductsByNegocioViewComponent } from './components/products-by-negocio
 import { PrimengModule } from '../primeng/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComentarioNegocioComponent } from './components/form-comentario-negocio/form-comentario-negocio.component';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormComentarioNegocioComponent } from './components/form-comentario-neg
     ProductCardComponent,
     MiniMapaComponent,
     ProductsByNegocioViewComponent,
-    FormComentarioNegocioComponent
+    FormComentarioNegocioComponent,
+    MenuHeaderComponent
   ],
   imports: [
     CommonModule,

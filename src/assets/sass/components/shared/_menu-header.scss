@@ -1,0 +1,35 @@
+.menuHeader{
+  position: absolute;
+  right: -100%;
+  margin: 15px 40px 0 0;
+  width: 300px;
+  z-index: 99999;
+  .menuHeader__item{
+    cursor: pointer;
+    padding: 5px 0 5px 15px;
+    border-top: 1px solid #e1e1e1;
+    transition: .3s ease all;
+    -webkit-transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -ms-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    &:hover{
+      color: $primary;
+    }
+  }
+  transition: .5s ease right;
+  -webkit-transition: .5s ease right;
+  -moz-transition: .5s ease right;
+  -ms-transition: .5s ease right;
+  -o-transition: .5s ease right;
+}
+.menuHeader.active{
+  right: 0;
+}
+@media screen and(max-width:460px) {
+  .menuHeader{
+    position: absolute;
+    margin: 15px 0 0 0;
+    width: 100vw;
+  }
+}

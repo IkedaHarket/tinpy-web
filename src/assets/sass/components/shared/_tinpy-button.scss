@@ -13,6 +13,16 @@
   -ms-transition: .3s ease background-color, .3s color, .3s border;
   -o-transition: .3s ease background-color, .3s color, .3s border;
 }
+.tinpyButton.disabled{
+  background-color: lighten($color: $secondary, $amount: 20);
+  border: 2px solid lighten($color: $secondary, $amount: 20);
+  &:hover{
+    cursor: default;
+    background-color: lighten($color: $secondary, $amount: 20);
+    border: 2px solid lighten($color: $secondary, $amount: 20);
+    color: $white;
+  }
+}
 .tinpyButton:hover{
   background-color: $white;
   color: $secondary;

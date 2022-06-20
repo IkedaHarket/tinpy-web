@@ -30,15 +30,19 @@ export class RegisterComponent {
     if(this.formRegister.invalid) return
     const {correo,password} = this.formRegister.value;
     this.authService.postRegisterUser(correo,password).subscribe({
-      next: () => this.router.navigateByUrl('/vip'),
-      error: ({errors})=> {
+      next: (a) => {
+        this.router.navigateByUrl('/vip')
+        // console.log(a);
+      },
+      error: ({error})=> {
         Swal.fire({
-          'title': errors.errors['errors'][0].msg,
+          'title': error.errors['errors'][0].msg,
           'icon': 'error',
           'showConfirmButton': false,
           'timer': 1500
         })
       },
+
     })
   }
   tieneError(campo:string):boolean{
