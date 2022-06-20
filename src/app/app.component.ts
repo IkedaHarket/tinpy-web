@@ -11,12 +11,18 @@ import { AuthService } from './auth/services/auth.service';
 export class AppComponent implements OnInit {
   title = 'tinpy-web';
 
+  loading:boolean = true;
+
   constructor(private authService:AuthService){}
 
   ngOnInit(): void {
     (mapboxgl as any ).accessToken = environment.mapboxToken;
     if(localStorage.getItem('token')){
-      this.authService.validarToken();
+      this.authService.validarToken().subscribe({
+        complete: () => this.loading = false
+      })
+    }else{
+      this.loading = false;
     }
   }
 }

@@ -26,8 +26,8 @@ export class ShopComponent implements OnInit {
   constructor(
     private negociosService: NegociosService,
     private horariosService: HorariosService,
-    private activatedRoute: ActivatedRoute,
-    ) { }
+    private activatedRoute: ActivatedRoute
+  ){}
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe((url: UrlSegment[])=>{
@@ -47,7 +47,6 @@ export class ShopComponent implements OnInit {
         }
       })
     });
-
   }
   setHorario(id:string){
   this.horariosService.getHorariosById(id).subscribe({
