@@ -16,6 +16,9 @@
     &:hover{
       color: $primary;
     }
+    &.active{
+    color: $primary;
+    }
   }
   transition: .5s ease right;
   -webkit-transition: .5s ease right;

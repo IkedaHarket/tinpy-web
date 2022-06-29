@@ -16,4 +16,7 @@ export class NegociosService {
   getNegocioById(id:string):Observable<NegocioByIDResponse>{
     return this.http.get<NegocioByIDResponse>(`${this._tinpyBackendURL}/api/negocios/${id}`)
   }
+  getNegocioByIdUser(id:string):Observable<NegocioByIDResponse>{
+    return this.http.get<NegocioByIDResponse>(`${this._tinpyBackendURL}/api/negocios/user/${id}`)
+  }
 }

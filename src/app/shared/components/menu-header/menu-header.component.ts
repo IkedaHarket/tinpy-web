@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Perfil } from 'src/app/core/interfaces';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +16,7 @@ export class MenuHeaderComponent implements OnInit {
 
   tinpyBackendURL: string = environment.tinpyBackendURL;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,16 @@ export class MenuHeaderComponent implements OnInit {
     this.logout.emit(true)
     this.active = false
   }
+
   toggleActive(){
     this.active = !this.active
+  }
+
+  clickImg(){
+    if(JSON.stringify(this.perfil).includes('_id')){
+      this.toggleActive()
+    }else{
+      this.router.navigateByUrl('/auth')
+    }
   }
 }

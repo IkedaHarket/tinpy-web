@@ -1,17 +1,17 @@
 
-    <img class="cursor-pointer" src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="Profile" (click)="toggleActive()">
+    <img class="cursor-pointer" src="{{tinpyBackendURL}}/{{perfil.img || 'default.png'}}" alt="Profile" (click)="clickImg()">
 <section class="container bg-light menuHeader" [class.active]="active">
   <div class="row">
-    <div class="col-12 menuHeader__item" routerLink="/vip/perfil">
+    <div class="col-12 menuHeader__item" routerLink="/vip/perfil" routerLinkActive="active" (click)="toggleActive()">
       Mi Perfil
     </div>
-    <div class="col-12 menuHeader__item">
+    <div class="col-12 menuHeader__item" routerLink="/vip/shop" routerLinkActive="active" (click)="toggleActive()">
       Mi Negocio
     </div>
-    <div class="col-12 menuHeader__item">
+    <div class="col-12 menuHeader__item" (click)="toggleActive()" routerLinkActive="active">
       Crear Producto
     </div>
-    <div class="col-12 menuHeader__item" (click)="emitLogout()">
+    <div class="col-12 menuHeader__item" (click)="emitLogout()" (click)="toggleActive()" routerLinkActive="active">
       Salir
     </div>
   </div>
