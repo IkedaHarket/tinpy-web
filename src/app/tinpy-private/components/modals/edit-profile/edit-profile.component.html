@@ -1,0 +1,44 @@
+<section>
+  <form [formGroup]="form" class="row justify-content-center" (submit)="save()">
+    <div class="file-container col-12 text-center mb-3" #dropzone>
+      <input
+        #inputFile
+        type="file"
+        (change)="getFile($event)"
+        (dragenter)="dropZone()"
+        (dragleave)="dropZone()"
+        class="file imgInput cursor-pointer"
+      />
+      <label class="col-12">Cambiar Imagen</label>
+    </div>
+
+    <div class="mb-3">
+      <input
+      class="inputCustomField bottomLine py-10"
+      type="text"
+      placeholder="Nombre"
+      formControlName="name"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+      class="inputCustomField bottomLine py-10"
+      type="text"
+      placeholder="Enlace"
+      formControlName="enlace"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+      class="inputCustomField bottomLine py-10"
+      type="text"
+      placeholder="Telefono"
+      formControlName="phone"
+      />
+    </div>
+    <div class="col-12">
+      <textarea class="customTextarea" placeholder="Escribe tu descripcion aquí..." formControlName="descripcion"></textarea>
+    </div>
+    <button type="submit" class="tinpyButton col-3 mt-2" [class.disabled]="form.invalid">Guardar</button>
+  </form>
+</section>

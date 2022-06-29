@@ -1,5 +1,5 @@
 @import './typography/k2d';
-
+@import './themes/theme';
 
 @import './base/reset';
 @import './base/colors';
@@ -20,6 +20,7 @@
 @import './components/shared/form-comentario-negocio';
 @import './components/shared/customTextarea';
 @import './components/shared/menu-header';
+@import './components/shared/imgInputs';
 
 @import './components/auth/main-component-page';
 @import './components/auth/slider';

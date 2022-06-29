@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Perfil } from 'src/app/core/interfaces';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../../../auth/services/auth.service';
+import { PerfilesService } from '../../../core/services/perfiles/perfiles.service';
 
 @Component({
   selector: 'app-form-comentario-negocio',
@@ -22,11 +23,13 @@ export class FormComentarioNegocioComponent implements OnInit {
   tinpyBackendURL: string = environment.tinpyBackendURL;
   constructor(
     private fb:FormBuilder,
-    private authService:AuthService
+    private authService:AuthService,
+    private perfilService:PerfilesService
     ) { }
 
   ngOnInit(): void {
-    this.perfil = this.authService.perfil
+    this.perfil = this.perfilService.perfil
   }
+
 
 }

@@ -7,6 +7,7 @@ export interface Perfil {
   img?:         string;
   estado?:      boolean;
   descripcion?: string;
+  telefono?:    string;
   enlace?:      string;
   createdAt?:   Date;
   updatedAt?:   Date;

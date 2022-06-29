@@ -22,6 +22,7 @@ export class MenuHeaderComponent implements OnInit {
   }
 
   emitLogout(){
+    this.toggleActive()
     this.logout.emit(true)
     this.active = false
   }
@@ -31,7 +32,7 @@ export class MenuHeaderComponent implements OnInit {
   }
 
   clickImg(){
-    if(JSON.stringify(this.perfil).includes('_id')){
+    if(JSON.stringify(this.perfil).includes('_id') || this.perfil.usuario?.uid){
       this.toggleActive()
     }else{
       this.router.navigateByUrl('/auth')
