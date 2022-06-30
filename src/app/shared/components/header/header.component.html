@@ -6,6 +6,7 @@
     class="header__input-search inputCustomField"
     type="text"
     placeholder="Buscar"
+    *ngIf="searchInput"
   />
   <div class="header__img imgCircular">
     <app-menu-header [perfil]="perfil" (logout)="logout()"></app-menu-header>

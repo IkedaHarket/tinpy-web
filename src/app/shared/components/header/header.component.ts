@@ -19,8 +19,15 @@ export class HeaderComponent implements OnInit,DoCheck {
 
   tinpyBackendURL: string = environment.tinpyBackendURL;
   perfil: Perfil = {}
+  searchInput: Boolean = true;
+
 
   ngDoCheck(): void {
+    if(window.location.href == 'http://localhost:4200/' || window.location.href == 'http://localhost:4200'){
+      this.searchInput = false;
+    }else{
+      this.searchInput = true;
+    }
     this.setDefaultPerfil();
     if(this.authService.perfil.usuario?.uid){
       this.perfil = this.authService.perfil
