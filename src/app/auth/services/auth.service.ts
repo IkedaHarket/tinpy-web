@@ -78,6 +78,7 @@ export class AuthService {
               correo : undefined,
               uid  : undefined
             }
+            localStorage.removeItem('token');
             return of(false)
           })
         )

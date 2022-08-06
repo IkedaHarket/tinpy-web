@@ -8,6 +8,8 @@ import { ComentarioProfileComponent } from './components/comentario-profile/come
 import { MyShopComponent } from './pages/my-shop/my-shop.component';
 import { EditProfileComponent } from './components/modals/edit-profile/edit-profile.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { NoShopComponent } from './components/no-shop/no-shop.component';
+import { MapAddressComponent } from './components/map-address/map-address.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     ProfileComponent,
     ComentarioProfileComponent,
     MyShopComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    NoShopComponent,
+    MapAddressComponent,
   ],
   imports: [
     CommonModule,

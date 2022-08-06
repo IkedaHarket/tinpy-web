@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row my-3">
+      <div class="col-12">
+        <h6 class="display-5 text-center">
+          ¿Tienes un local o servicio que ofrecer?
+        </h6>
+      </div>
+  
+      <form [formGroup]="noShopForm" (submit)="submit()" class="row">
+        <div class="col-12">
+          <div class="col-12 col-lg-6">
+            <input type="text" placeholder="Nombre" class="inputCustomField py-2 mt-3" formControlName="name" />
+  
+            <select class="select-input-custom w-100 ps-2 mt-3" formControlName="shopType">
+                <option value="#" selected>Tipo de negocio</option>
+                <option *ngFor="let shopType of shopTypes" [value]="shopType._id">{{shopType.nombre}}</option>
+            </select>
+          </div>
+          <div class="col-12 col-lg-6 mt-3">
+            <app-map-address class="text-center" (lngLat)="changeMarkerMap($event)"></app-map-address>
+          </div>
+        </div>
+    
+        <input type="text" placeholder="Telefono" class="inputCustomField py-2 mt-3" formControlName="phone">
+    
+        <input type="text" placeholder="Correo" class="inputCustomField py-2 mt-3" formControlName="email">
+    
+        <textarea class="customTextarea mt-3" placeholder="Escribe tu descripcion aquí..." formControlName="desc"></textarea>
+    
+    
+        <div class="col-12 text-center mt-3">
+            <button class="tinpyButton" [class.disabled]="noShopForm.invalid" type="submit">Crear</button>
+        </div>
+      </form>
+    </div>
+  </div>

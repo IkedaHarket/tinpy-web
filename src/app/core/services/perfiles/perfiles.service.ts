@@ -23,11 +23,20 @@ export class PerfilesService {
 
   private _tinpyBackendURL: string = environment.tinpyBackendURL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient){
+    if( localStorage.getItem('perfil') ){
+      this._perfil = JSON.parse(localStorage.getItem('perfil')!) 
+    }
+  }
 
   getPerfilByUserID(id:string):Observable<Perfil>{
     return this.http.get<Perfil>(`${this._tinpyBackendURL}/api/perfiles/usuario/${id}`)
-      .pipe( tap( (perfil)=> this._perfil = perfil ) )
+      .pipe( 
+        tap( (perfil)=> {
+          this._perfil = perfil
+          localStorage.setItem('perfil',JSON.stringify(perfil))
+        } ) 
+        )
   }
 
   editProfile(idPerfil:string,body:any):Observable<PerfilResponse>{

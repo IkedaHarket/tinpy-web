@@ -12,6 +12,7 @@ export class MyShopComponent implements OnInit {
 
   perfil: Perfil = {}
   shop: Negocio = {}
+  noShop : boolean = false;
   constructor(
     private authService:AuthService,
     private negociosService: NegociosService,
@@ -23,6 +24,9 @@ export class MyShopComponent implements OnInit {
       next: ({negocios})=>{
         this.shop = negocios || {};
         console.log(this.shop);
+      },
+      error:()=>{
+        this.noShop = true;
       }
     })
   }

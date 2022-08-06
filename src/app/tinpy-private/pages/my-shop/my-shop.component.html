@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!noShop">
   <div class="row my-3">
     <div class="col-12">
       <h6 class="display-5 text-center">
@@ -36,3 +36,5 @@
     </div>
   </section>
 </div>
+
+<app-no-shop *ngIf="noShop"></app-no-shop>

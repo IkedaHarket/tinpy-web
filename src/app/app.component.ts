@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
+import { take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth/services/auth.service';
+import { TipoNegociosService } from './core/services/tipo-negocios/tipo-negocios.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,10 @@ export class AppComponent implements OnInit {
 
   loading:boolean = true;
 
-  constructor(private authService:AuthService){}
+  constructor(
+    private authService:AuthService,
+    private shopTypesService: TipoNegociosService,
+    ){}
 
   ngOnInit(): void {
     (mapboxgl as any ).accessToken = environment.mapboxToken;
@@ -24,5 +29,6 @@ export class AppComponent implements OnInit {
     }else{
       this.loading = false;
     }
+    this.shopTypesService.getShopTypes().pipe(take(1)).subscribe();
   }
 }
