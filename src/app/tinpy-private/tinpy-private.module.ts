@@ -10,6 +10,8 @@ import { EditProfileComponent } from './components/modals/edit-profile/edit-prof
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { NoShopComponent } from './components/no-shop/no-shop.component';
 import { MapAddressComponent } from './components/map-address/map-address.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { PrimengModule } from '../primeng/primeng.module';
 
 
 @NgModule({
@@ -20,12 +22,14 @@ import { MapAddressComponent } from './components/map-address/map-address.compon
     EditProfileComponent,
     NoShopComponent,
     MapAddressComponent,
+    ProductsComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     TinpyPrivateRoutingModule,
     DynamicDialogModule,
+    PrimengModule,
   ]
 })
 export class TinpyPrivateModule { }

@@ -41,7 +41,7 @@ export class NoShopComponent implements OnInit {
   
   saveAddress(){
     if(!this.address.exist) return;
-    this.direcciones.postDireccion(this.address.lngLat).subscribe(console.log)
+    this.direcciones.postDireccion(this.address.lngLat).subscribe(()=>location.reload())
   }
 
   changeMarkerMap(lngLat:any){

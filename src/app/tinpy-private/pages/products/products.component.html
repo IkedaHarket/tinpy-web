@@ -1,0 +1,42 @@
+<section class="container mt-5" *ngIf="!loadedProducts">
+    <div class="row justify-content-center">
+        <p-progressSpinner class="text-center"></p-progressSpinner>
+    </div>
+</section>
+<div class="container" *ngIf="loadedProducts">
+    <div class="my-4">
+        <button type="button" class="tinpyButton">Agregar nuevo producto</button>
+    </div>
+    <section>
+        <p-table [value]="products.docs!" styleClass="p-datatable-sm">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Imagen</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <!-- <td>{{product.}}</td> -->
+                    <td>{{product.nombre}}</td>
+                    <td>
+                        <img src="{{tinpyBackendURL}}/{{product.imagenPrincipal || 'default.png'}}" [alt]="product.nombre" width="100" class="shadow-4">
+                    </td>
+                    <td>{{product.categoria.nombre}}</td>
+                    <td>{{product.precio}}</td>
+                    <td>
+                        <span>Editar</span>
+                        <span>Eliminar</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div class="search-page__paginator b-0">
+            <p-paginator class="tinpy-paginator" [rows]="products.limit || 5" [totalRecords]="products.totalDocs || 0"
+              (onPageChange)="paginate($event)"></p-paginator>
+          </div>
+    </section>
+</div>
