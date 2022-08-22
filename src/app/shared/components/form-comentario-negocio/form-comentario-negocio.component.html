@@ -6,7 +6,7 @@
       <img *ngIf="!perfil.img" routerLink="/auth" src="https://www.xtrafondos.com/wallpapers/resized/chica-anime-arte-digital-9879.jpg?s=large" alt="profile">
     </div>
     <div class="col-12 col-lg-6 position-relative">
-      <label for="titleComentario" class="labelTitulo">Ikeda Harket</label>
+      <label for="titleComentario" class="labelTitulo">{{perfil.nombre}}</label>
       <input type="text" class="inputCustomField" placeholder="Titulo" id="titleComentario" formControlName="titulo">
       <div class="stars">
         <input type="radio" id="star1" name="rating" value="1" formControlName="stars"/>

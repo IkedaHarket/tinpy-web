@@ -3,6 +3,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth/services/auth.service';
+import { CategoriaService } from './core/services/categorias/categoria.service';
 import { TipoNegociosService } from './core/services/tipo-negocios/tipo-negocios.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   constructor(
     private authService:AuthService,
     private shopTypesService: TipoNegociosService,
+    private categoriasService: CategoriaService,
     ){}
 
   ngOnInit(): void {
@@ -30,5 +32,6 @@ export class AppComponent implements OnInit {
       this.loading = false;
     }
     this.shopTypesService.getShopTypes().pipe(take(1)).subscribe();
+    this.categoriasService.getCategorias().pipe(take(1)).subscribe()
   }
 }

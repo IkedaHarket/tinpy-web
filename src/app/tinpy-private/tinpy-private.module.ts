@@ -12,6 +12,7 @@ import { NoShopComponent } from './components/no-shop/no-shop.component';
 import { MapAddressComponent } from './components/map-address/map-address.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { PrimengModule } from '../primeng/primeng.module';
+import { NewProductComponent } from './components/modals/new-product/new-product.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PrimengModule } from '../primeng/primeng.module';
     NoShopComponent,
     MapAddressComponent,
     ProductsComponent,
+    NewProductComponent,
   ],
   imports: [
     CommonModule,

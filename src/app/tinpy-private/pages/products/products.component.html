@@ -5,7 +5,7 @@
 </section>
 <div class="container" *ngIf="loadedProducts">
     <div class="my-4">
-        <button type="button" class="tinpyButton">Agregar nuevo producto</button>
+        <button type="button" class="tinpyButton" (click)="openModalEdit()">Agregar nuevo producto</button>
     </div>
     <section>
         <p-table [value]="products.docs!" styleClass="p-datatable-sm">

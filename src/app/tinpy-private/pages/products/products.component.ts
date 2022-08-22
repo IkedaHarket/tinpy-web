@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PerfilesService } from '../../../core/services/perfiles/perfiles.service';
 import { NegociosService } from '../../../core/services/negocios/negocios.service';
 import { ProductosService } from '../../../core/services/productos/productos.service';
 import { ProductosPages } from 'src/app/core/interfaces';
 import { environment } from 'src/environments/environment';
+import { DialogService } from 'primeng/dynamicdialog';
+import { NewProductComponent } from '../../components/modals/new-product/new-product.component';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers:[DialogService]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   uidUser: string = '';
   products: ProductosPages = {};
@@ -19,11 +22,13 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   limit: number = 4;
   idNegocio : string = '';
+  refModal: any;
 
   constructor(
     private perfilService : PerfilesService,
     private negocioService: NegociosService,
     private productsService: ProductosService,
+    public dialogService: DialogService,
     ) { }
 
   ngOnInit(): void {
@@ -51,5 +56,18 @@ export class ProductsComponent implements OnInit {
         console.log(err)
       }
       })
+  }
+  openModalEdit(){
+    this.refModal = this.dialogService.open(NewProductComponent, {
+      header: 'Nuevo Producto',
+      width: '70%',
+      contentStyle: {"height": "auto", "overflow": "auto"},
+      baseZIndex: 10000,
+      closeOnEscape:true
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.refModal) this.refModal.close()
   }
 }
