@@ -23,12 +23,13 @@ export class NegociosService {
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders()
                     .set('x-token',token);
-    return this.http.post<NegocioByIDResponse>(`${this._tinpyBackendURL}/api/negocios`,{
-      tipoNegocio: body.shopType,
-      nombre : body.name,
-      telefono : body.phone,
-      correo: body.email,
-      descripcion: body.desc
-    },{headers})
+    let formData:FormData = new FormData();
+          formData.append('tipoNegocio', body.shopType);
+          formData.append('nombre', body.name);
+          formData.append('telefono', body.phone);
+          formData.append('correo', body.email);
+          formData.append('descripcion', body.desc);
+          formData.append('img', body.img);
+    return this.http.post<NegocioByIDResponse>(`${this._tinpyBackendURL}/api/negocios`,formData,{headers})
   }
 }

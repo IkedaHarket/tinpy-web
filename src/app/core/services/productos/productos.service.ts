@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import {
   ProductosByNameRes,
@@ -9,6 +9,7 @@ import {
   ProductsByNamePaginateResponse,
   ProductosByIdNegocioResponse,
   ProductosPages } from 'src/app/core/interfaces';
+import { ProductPostResp } from '../../interfaces/productos/product-post-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,23 @@ export class ProductosService {
   }
   getProductsByIdNegocioAndNamePaginate(id:string,name:string,page:number = 1,limit:number = 5):Observable<ProductosByIdNegocioResponse>{
     return this.http.get<ProductosByIdNegocioResponse>(`${this._tinpyBackendURL}/api/productos/negocio-productos-paginate/${id}/${name}?page=${page}&limit=${limit}`)
+  }
+  postProduct({nombre,precio,img,categoria,descripcion}:any):Observable<ProductPostResp>{
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders()
+                    .set('x-token',token);
+    let formData:FormData = new FormData();
+        formData.append('nombre', nombre);
+        formData.append('precio', precio);
+        formData.append('img', img);
+        formData.append('categoria', categoria);
+        formData.append('descripcion', descripcion);
+    return this.http.post<ProductPostResp>(`${this._tinpyBackendURL}/api/productos`,formData,{headers})
+  }
+  deleteProduct(id:string){
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders()
+                    .set('x-token',token);
+    return this.http.delete<ProductPostResp>(`${this._tinpyBackendURL}/api/productos/${id}`,{headers})
   }
 }

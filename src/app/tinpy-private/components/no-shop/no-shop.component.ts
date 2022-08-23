@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoNegociosService } from '../../../core/services/tipo-negocios/tipo-negocios.service';
 import { ShopType } from '../../../core/interfaces/tipo-negocios/shopTypes.interface';
@@ -11,13 +11,16 @@ import { DireccionService } from '../../../core/services/direccion/direccion.ser
   styleUrls: ['./no-shop.component.scss']
 })
 export class NoShopComponent implements OnInit {
+  @ViewChild('dropzone') $dropzone!: ElementRef;
+  @ViewChild('inputFile') $inputFile!: ElementRef;
 
   noShopForm: FormGroup = this.fb.group({
-    name: ['aa',[Validators.required]],
+    name: ['',[Validators.required]],
     shopType: ['#',[Validators.required]],
-    phone: ['aa',[Validators.required]],
-    email: ['aa',[Validators.required]],
-    desc: ['aa',[Validators.required]],
+    phone: ['',[Validators.required]],
+    email: ['',[Validators.required]],
+    desc: ['',[Validators.required]],
+    img:[]
   })
 
   shopTypes: ShopType[] = [];
@@ -46,5 +49,23 @@ export class NoShopComponent implements OnInit {
 
   changeMarkerMap(lngLat:any){
     this.address = {exist: true, lngLat}
+  }
+
+  dropZone() {
+    this.$dropzone.nativeElement.classList.toggle('active');
+  }
+
+  getFile(event: any) {
+    this.noShopForm.get('img')?.setValue(event.target.files[0])
+    console.log(this.noShopForm.value);
+
+    const extension = this.noShopForm.get('img')?.value.name.split('.').pop();
+
+    if (!['png','jpg','jpeg'].includes(extension)) {
+      this.noShopForm.get('img')?.setValue('');
+      this.$dropzone.nativeElement.classList.remove('active');
+      this.$inputFile.nativeElement.value = '';
+    }
+
   }
 }

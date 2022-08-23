@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductosService } from 'src/app/core/services/productos/productos.service';
+import { CategoriaService } from '../../../../core/services/categorias/categoria.service';
 
 @Component({
   selector: 'app-new-product',
@@ -12,25 +14,28 @@ export class NewProductComponent implements OnInit {
   @ViewChild('inputFile') $inputFile!: ElementRef;
 
   form: FormGroup = this.fb.group({
-    name        :['',[Validators.required]],
-    phone       :['',],
-    descripcion :['',],
-    enlace      :['',],
-    img         :['',],
+    nombre      :['',[Validators.required]],
+    categoria   :['#'],
+    img         :[],
+    precio      :['',Validators.required],
+    descripcion :['',Validators.required],
   })
 
   constructor(
     private fb : FormBuilder,
-    
+    public categoriaService: CategoriaService,
+    public productService: ProductosService,
     ) { }
 
   ngOnInit(): void {
   }
 
   save() {
-    if(this.form.invalid) return;
+    if(this.form.invalid || this.form.get('categoria')?.value == '#') return;
     console.log(this.form.value);
-
+    this.productService.postProduct({...this.form.value}).subscribe((product)=>{
+      location.reload();
+    })
   }
 
   dropZone() {

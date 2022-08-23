@@ -6,6 +6,7 @@ import { ProductosPages } from 'src/app/core/interfaces';
 import { environment } from 'src/environments/environment';
 import { DialogService } from 'primeng/dynamicdialog';
 import { NewProductComponent } from '../../components/modals/new-product/new-product.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -38,7 +39,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       this.productsService.getProductsByIdNegocioPaginate(negocios?._id || '').subscribe(({productos})=>{
         this.products = productos!
         this.loadedProducts = true;
-        console.log( this.products);
       })
     })
   }
@@ -69,5 +69,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.refModal) this.refModal.close()
+  }
+  delete(id:string){
+    this.productsService.deleteProduct(id).subscribe(resp=>{
+      if(resp.ok){
+        this.products.docs = this.products.docs?.filter(p => resp.producto?._id !== p._id)
+      }
+    })
   }
 }

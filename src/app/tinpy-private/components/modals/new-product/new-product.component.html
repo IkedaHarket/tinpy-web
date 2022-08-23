@@ -11,35 +11,32 @@
         />
         <label class="col-12">Cambiar Imagen</label>
       </div>
-  
+      <div class="mb-3">
+        <select formControlName="categoria" class="select-input-custom py-10 px-2">
+          <option value="#">Categoria</option>
+          <option *ngFor="let categoria of categoriaService.categorias" [value]="categoria._id">{{categoria.nombre}}</option>
+        </select>
+      </div>
       <div class="mb-3">
         <input
         class="inputCustomField bottomLine py-10"
         type="text"
         placeholder="Nombre"
-        formControlName="name"
+        formControlName="nombre"
         />
       </div>
       <div class="mb-3">
         <input
         class="inputCustomField bottomLine py-10"
-        type="text"
-        placeholder="Enlace"
-        formControlName="enlace"
-        />
-      </div>
-      <div class="mb-3">
-        <input
-        class="inputCustomField bottomLine py-10"
-        type="text"
-        placeholder="Telefono"
-        formControlName="phone"
+        type="number"
+        placeholder="Precio"
+        formControlName="precio"
         />
       </div>
       <div class="col-12">
         <textarea class="customTextarea" placeholder="Escribe tu descripcion aquí..." formControlName="descripcion"></textarea>
       </div>
-      <button type="submit" class="tinpyButton col-3 mt-2" [class.disabled]="form.invalid">Guardar</button>
+      <button type="submit" class="tinpyButton col-3 mt-2" [class.disabled]="form.invalid || form.get('categoria')?.value == '#'">Guardar</button>
     </form>
   </section>
   

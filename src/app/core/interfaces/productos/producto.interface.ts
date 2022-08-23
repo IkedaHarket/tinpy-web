@@ -5,6 +5,7 @@ export interface Producto {
   _id?:             string;
   negocio?:         string | Negocio;
   nombre?:          string;
+  numeroDislikes?:  number;
   precio?:          number;
   descripcion?:     string;
   numeroLikes?:     number;

@@ -23,13 +23,20 @@
                     <!-- <td>{{product.}}</td> -->
                     <td>{{product.nombre}}</td>
                     <td>
-                        <img src="{{tinpyBackendURL}}/{{product.imagenPrincipal || 'default.png'}}" [alt]="product.nombre" width="100" class="shadow-4">
+                        <img 
+                            src="{{tinpyBackendURL}}/{{product.imagenPrincipal || 'default.png'}}" 
+                            [alt]="product.nombre" 
+                            width="100" 
+                            class="shadow-4 cursor-pointer"
+                            routerLink="{{'/product/'+ product._id}}"
+                            >
                     </td>
                     <td>{{product.categoria.nombre}}</td>
                     <td>{{product.precio}}</td>
                     <td>
                         <span>Editar</span>
-                        <span>Eliminar</span>
+                        <span> / </span>
+                        <span (click)="delete(product._id)" class="cursor-pointer">Eliminar</span>
                     </td>
                 </tr>
             </ng-template>

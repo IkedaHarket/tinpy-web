@@ -5,10 +5,22 @@
           ¿Tienes un local o servicio que ofrecer?
         </h6>
       </div>
-  
       <form [formGroup]="noShopForm" (submit)="submit()" class="row">
+        
+        <div class="file-container col-12 text-center mt-3" #dropzone>
+          <input
+            #inputFile
+            type="file"
+            (change)="getFile($event)"
+            (dragenter)="dropZone()"
+            (dragleave)="dropZone()"
+            class="file imgInput cursor-pointer"
+          />
+          <label class="col-12">Imagen</label>
+        </div>
+
         <div class="col-12">
-          <div class="col-12 col-lg-6">
+          <div class="col-12">
             <input type="text" placeholder="Nombre" class="inputCustomField py-2 mt-3" formControlName="name" />
   
             <select class="select-input-custom w-100 ps-2 mt-3" formControlName="shopType">
@@ -16,7 +28,7 @@
                 <option *ngFor="let shopType of shopTypes" [value]="shopType._id">{{shopType.nombre}}</option>
             </select>
           </div>
-          <div class="col-12 col-lg-6 mt-3">
+          <div class="col-12 mt-3">
             <app-map-address class="text-center" (lngLat)="changeMarkerMap($event)"></app-map-address>
           </div>
         </div>
