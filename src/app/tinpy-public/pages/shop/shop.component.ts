@@ -47,6 +47,13 @@ export class ShopComponent implements OnInit {
         }
       })
     });
+    (function() { // DON'T EDIT BELOW THIS LINE
+      const date = new Date()
+      const d = document, s = d.createElement('script');
+      s.src = 'https://tinpy.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', JSON.stringify(+date) );
+      (d.head || d.body).appendChild(s);
+      })();
   }
   setHorario(id:string){
   this.horariosService.getHorariosById(id).subscribe({

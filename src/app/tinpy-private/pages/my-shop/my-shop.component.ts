@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Negocio, Perfil } from 'src/app/core/interfaces';
+import { Horario, Negocio, Perfil } from 'src/app/core/interfaces';
+import { HorariosService } from 'src/app/core/services/horarios/horarios.service';
 import { NegociosService } from 'src/app/core/services/negocios/negocios.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-my-shop',
@@ -13,9 +15,15 @@ export class MyShopComponent implements OnInit {
   perfil: Perfil = {}
   shop: Negocio = {}
   noShop : boolean = false;
+  tinpyBackendURL: string = environment.tinpyBackendURL;
+  drawPromedioEstrellas: string[] = [];
+  horario: Horario = {};
+  lngLat: [number,number] = [0,0];
+
   constructor(
     private authService:AuthService,
     private negociosService: NegociosService,
+    private horarioService: HorariosService,
     ) { }
 
   ngOnInit(): void {
@@ -23,12 +31,19 @@ export class MyShopComponent implements OnInit {
     this.negociosService.getNegocioByIdUser(this.perfil.usuario?.uid!).subscribe({
       next: ({negocios})=>{
         this.shop = negocios || {};
-        console.log(this.shop);
+        console.log(negocios);
+        this.lngLat = [Number(negocios?.direccion?.lng) || 0, Number(negocios?.direccion?.lat) || 0]
+        this.setHorario(this.shop._id!);
       },
       error:()=>{
         this.noShop = true;
       }
     })
   }
-
+  setHorario(id:string){
+    this.horarioService.getHorariosById(id).subscribe({
+      next:(horario) => this.horario = horario,
+      error:(err) => console.log('Error al obtener horario',err),
+    })
+  }
 }

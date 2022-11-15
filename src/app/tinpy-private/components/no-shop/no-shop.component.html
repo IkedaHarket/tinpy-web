@@ -10,6 +10,7 @@
         <div class="file-container col-12 text-center mt-3" #dropzone>
           <input
             #inputFile
+            title="file"
             type="file"
             (change)="getFile($event)"
             (dragenter)="dropZone()"
@@ -23,7 +24,7 @@
           <div class="col-12">
             <input type="text" placeholder="Nombre" class="inputCustomField py-2 mt-3" formControlName="name" />
   
-            <select class="select-input-custom w-100 ps-2 mt-3" formControlName="shopType">
+            <select class="select-input-custom w-100 ps-2 mt-3" formControlName="shopType" title="shopType">
                 <option value="#" selected>Tipo de negocio</option>
                 <option *ngFor="let shopType of shopTypes" [value]="shopType._id">{{shopType.nombre}}</option>
             </select>
@@ -39,7 +40,69 @@
     
         <textarea class="customTextarea mt-3" placeholder="Escribe tu descripcion aquí..." formControlName="desc"></textarea>
     
-    
+        <div class="row mt-4">
+          <div class="col-12">
+            <h5 class="display-3 text-center">Planes</h5>
+          </div>
+        </div>
+        
+        <div class="planItem-container">
+          <div class="planItem" [class.selected]=" plan == 'basic' ">
+            <span class="planItem__title">Titulo</span>
+            <img src="../../../../assets/imgs/placeholder-profile.png" alt="imgPlan" class="planItem__img">
+            <ul class="planItem__ul">
+              <li class="planItem__li">Caracteristica 1</li>
+              <li class="planItem__li">Caracteristica 2</li>
+              <li class="planItem__li">Caracteristica 3</li>
+            </ul>
+            <div class="planItem__price">
+              <span class="planItem__price-value">24</span>
+              <span class="planItem__price-sub">
+                CLP/Month
+              </span>
+            </div>
+           <button type="button" class="mb-3 tinpyButton" (click)="selectPlan('basic')">
+            {{(plan == 'basic')? 'Seleccionado': 'Seleccionar'}}
+          </button>
+          </div>
+          <div class="planItem" [class.selected]=" plan == 'estandar' ">
+            <span class="planItem__title">Titulo</span>
+            <img src="../../../../assets/imgs/placeholder-profile.png" alt="imgPlan" class="planItem__img">
+            <ul class="planItem__ul">
+              <li class="planItem__li">Caracteristica 1</li>
+              <li class="planItem__li">Caracteristica 2</li>
+              <li class="planItem__li">Caracteristica 3</li>
+            </ul>
+            <div class="planItem__price">
+              <span class="planItem__price-value">24</span>
+              <span class="planItem__price-sub">
+                CLP/Month
+              </span>
+            </div>
+           <button type="button" class="mb-3 tinpyButton" (click)="selectPlan('estandar')" >
+            {{(plan == 'estandar')? 'Seleccionado': 'Seleccionar'}}
+           </button>
+          </div>
+          <div class="planItem" [class.selected]=" plan == 'premium' ">
+            <span class="planItem__title">Titulo</span>
+            <img src="../../../../assets/imgs/placeholder-profile.png" alt="imgPlan" class="planItem__img">
+            <ul class="planItem__ul">
+              <li class="planItem__li">Caracteristica 1</li>
+              <li class="planItem__li">Caracteristica 2</li>
+              <li class="planItem__li">Caracteristica 3</li>
+            </ul>
+            <div class="planItem__price">
+              <span class="planItem__price-value">24</span>
+              <span class="planItem__price-sub">
+                CLP/Month
+              </span>
+            </div>
+            <button type="button" class="mb-3 tinpyButton" (click)="selectPlan('premium')">
+              {{(plan == 'premium')? 'Seleccionado': 'Seleccionar'}}
+            </button>
+          </div>
+        </div>
+
         <div class="col-12 text-center mt-3">
             <button class="tinpyButton" [class.disabled]="noShopForm.invalid" type="submit">Crear</button>
         </div>

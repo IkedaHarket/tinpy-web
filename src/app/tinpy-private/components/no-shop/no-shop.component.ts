@@ -5,6 +5,12 @@ import { ShopType } from '../../../core/interfaces/tipo-negocios/shopTypes.inter
 import { NegociosService } from '../../../core/services/negocios/negocios.service';
 import { DireccionService } from '../../../core/services/direccion/direccion.service';
 
+type Plans = 'basic' | 'estandar' | 'premium'
+enum PlansTypes {
+  BASIC = 'basic',
+  ESTANDAR = 'estandar',
+  PREMIUM = 'premium',
+}
 @Component({
   selector: 'app-no-shop',
   templateUrl: './no-shop.component.html',
@@ -13,6 +19,8 @@ import { DireccionService } from '../../../core/services/direccion/direccion.ser
 export class NoShopComponent implements OnInit {
   @ViewChild('dropzone') $dropzone!: ElementRef;
   @ViewChild('inputFile') $inputFile!: ElementRef;
+
+  plan:Plans = PlansTypes.BASIC;
 
   noShopForm: FormGroup = this.fb.group({
     name: ['',[Validators.required]],
@@ -67,5 +75,8 @@ export class NoShopComponent implements OnInit {
       this.$inputFile.nativeElement.value = '';
     }
 
+  }
+  selectPlan(plan:Plans){
+      this.plan = plan;
   }
 }

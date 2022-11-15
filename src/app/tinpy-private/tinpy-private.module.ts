@@ -13,6 +13,7 @@ import { MapAddressComponent } from './components/map-address/map-address.compon
 import { ProductsComponent } from './pages/products/products.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { NewProductComponent } from './components/modals/new-product/new-product.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NewProductComponent } from './components/modals/new-product/new-product
     TinpyPrivateRoutingModule,
     DynamicDialogModule,
     PrimengModule,
+    SharedModule,
   ]
 })
 export class TinpyPrivateModule { }

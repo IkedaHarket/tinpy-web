@@ -3,6 +3,7 @@
   right: -100%;
   margin: 15px 40px 0 0;
   width: 300px;
+  display: none;
   z-index: 99999;
   .menuHeader__item{
     cursor: pointer;
@@ -27,6 +28,7 @@
   -o-transition: .5s ease right;
 }
 .menuHeader.active{
+  display: block;
   right: 0;
 }
 @media screen and(max-width:460px) {

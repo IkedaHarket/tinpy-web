@@ -30,14 +30,22 @@
       <button class="mt-4 tinpyButton" routerLink="/search">Volver</button>
     </div>
   </div>
-  <h6 class="display-5 mb-4">Productos Relacionados</h6>
-  <section class="row-products">
-    <div *ngFor="let productoRelacionado of productsRelacionados.productos">
-      <app-product-card
-      *ngIf="productoRelacionado._id != idProducto"
-      [producto] = productoRelacionado
-    ></app-product-card>
-    </div>
-  </section>
+  <ng-container>
+    <h6 class="display-5 mb-4" *ngIf="productsRelacionados.length > 1">Productos Relacionados</h6>
+    <section class="row-products">
+      <div *ngFor="let productoRelacionado of productsRelacionados">
+        <app-product-card
+        *ngIf="productoRelacionado._id != idProducto"
+        [producto] = productoRelacionado
+      ></app-product-card>
+      </div>
+    </section>
+  </ng-container>
+  <div class="container mt-5">
+    <h6 class="display-5 mb-4">
+      Nos encantaría saber tu opinion :)
+    </h6>
+    <div id="disqus_thread"></div>
+  </div>
 </div>
 

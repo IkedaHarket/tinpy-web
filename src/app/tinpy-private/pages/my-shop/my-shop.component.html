@@ -1,40 +1,45 @@
-<div class="container" *ngIf="!noShop">
-  <div class="row my-3">
-    <div class="col-12">
-      <h6 class="display-5 text-center">
-        Mi negocio
-      </h6>
+<!-- {{negocio | json}} -->
+<div class="shop-page" *ngIf="!noShop">
+  <div class="shop-page__banner">
+    <img src="https://i.pinimg.com/originals/7d/98/84/7d98840fdff1b2e7cd508cc7f3a17403.jpg" alt="">
+  </div>
+  <div class="shop-page__header">
+    <img src="{{tinpyBackendURL}}/{{shop.img}}" [alt]="shop.nombre" title="name">
+    <div class="tinpy-badge display-6 shop-page__header-title">
+      {{shop.nombre}}
+    </div>
+    <span class="c-primary">
+      ({{shop.tipoNegocio?.nombre?.toUpperCase()}})
+    </span>
+    <div class="shop-page__header-stars">
+      <img *ngFor="let star of drawPromedioEstrellas" [src]="star" alt="stars">
     </div>
   </div>
-  <section class="row">
-    <div class="col-12">
-      <table class="w-100">
-        <tbody>
-          <tr>
-            <td class="pe-4">Nombre: </td>
-            <td class="pe-4">{{shop.nombre}}</td>
-            <td class="pe-4">
-              editar
-            </td>
-          </tr>
-          <tr>
-            <td class="pe-4">Descripcion: </td>
-            <td class="pe-4">{{shop.descripcion}}</td>
-            <td class="pe-4">
-              editar
-            </td>
-          </tr>
-          <tr>
-            <td class="pe-4">Correo: </td>
-            <td class="pe-4">{{shop.correo}}</td>
-            <td class="pe-4">
-              editar
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="shop-page__descripcion">
+    <p>
+      {{shop.descripcion || 'Proximamente agregaremos una historia mas detallada :3' }}
+    </p>
+  </div>
+  <div class="container-fluid">
+    <div class="shop-page__direccion">
+      <div class="shop-page__direccion-mapa">
+        <app-mini-mapa *ngIf="lngLat[0] != 0" [lngLat]="lngLat"></app-mini-mapa>
+      </div>
+      <div class="shop-page__direccion-horario" *ngIf="horario.ok">
+        <h6>Horarios de atencion</h6>
+        <span class="c-primary">LU ~ </span> <span>{{horario.lunes_inicio}} - {{horario.lunes_cierre}}</span><br>
+        <span class="c-primary">MA ~ </span> <span>{{horario.martes_inicio}} - {{horario.martes_cierre}}</span><br>
+        <span class="c-primary">MI ~ </span> <span>{{horario.miercoles_inicio}} - {{horario.miercoles_cierre}}</span><br>
+        <span class="c-primary">JU ~ </span> <span>{{horario.jueves_inicio}} - {{horario.jueves_cierre}}</span><br>
+        <span class="c-primary">VI ~ </span> <span>{{horario.viernes_inicio}} - {{horario.viernes_cierre}}</span><br>
+        <span class="c-primary">SA ~ </span> <span>{{horario.sabado_inicio}} - {{horario.sabado_cierre}}</span><br>
+        <span class="c-primary">DO ~ </span> <span>{{horario.domingo_inicio}} - {{horario.domingo_cierre}}</span>
+      </div>
+      <div class="shop-page__direccion-horario" *ngIf="!horario.ok">
+        Este local aun no dispone de horarios de atencion
+      </div>
     </div>
-  </section>
+  </div>
 </div>
 
 <app-no-shop *ngIf="noShop"></app-no-shop>

@@ -4,7 +4,7 @@
     <img src="https://i.pinimg.com/originals/7d/98/84/7d98840fdff1b2e7cd508cc7f3a17403.jpg" alt="">
   </div>
   <div class="shop-page__header">
-    <img src="{{tinpyBackendURL}}/{{negocio.negocios?.img}}" [alt]="negocio.negocios?.nombre">
+    <img src="{{tinpyBackendURL}}/{{negocio.negocios?.img}}" [alt]="negocio.negocios?.nombre" title="shop"/>
     <div class="tinpy-badge display-6 shop-page__header-title">
       {{negocio.negocios?.nombre}}
     </div>
@@ -47,6 +47,7 @@
     <h6 class="display-6 mb-3">
       Nos encantaría saber tu opinion :)
     </h6>
-    <app-form-comentario-negocio></app-form-comentario-negocio>
+    <div id="disqus_thread"></div>
+    <!-- <app-form-comentario-negocio></app-form-comentario-negocio> -->
   </div>
 </div>
