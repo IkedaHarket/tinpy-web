@@ -1,18 +1,25 @@
 .profile-page{
   .profile-page__img{
-    width: 280px;
-    height: 250px;
-    margin: 0 50px;
-  }
-
-}
-@media screen and (max-width: 991px) {
-  .profile-page{
-    .profile-page__img{
-      margin: auto;
-    }
-    .profile-page__desc{
-      text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .imgCircular{
+      height: 300px;
+      width: 300px;
+      img{
+        object-fit: contain;
+      }
     }
   }
+  
 }
+// @media screen and (max-width: 991px) {
+  // .profile-page{
+  //   .profile-page__img{
+  //     margin: auto;
+  //   }
+  //   .profile-page__desc{
+  //     text-align: center;
+  //   }
+  // }
+// }
