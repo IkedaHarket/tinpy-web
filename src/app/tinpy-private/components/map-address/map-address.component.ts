@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
 @Component({
@@ -15,7 +15,8 @@ import * as mapboxgl from 'mapbox-gl';
 export class MapAddressComponent implements AfterViewInit {
 
   @Output() lngLat = new EventEmitter<{lng:number; lat:number}>();
-  
+  @Input() initialLnglat?: any = false;
+
   @ViewChild('mapa') divMapa!: ElementRef;
   mapa!: mapboxgl.Map;
 
@@ -31,9 +32,17 @@ export class MapAddressComponent implements AfterViewInit {
       container: this.divMapa.nativeElement, // container ID
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
       center:this.center,
-      zoom:this.zoomLevel
+      zoom:this.zoomLevel,
     });
     // this.leerMarcadoresLocalStorage();
+    this.mapa.on('load',()=>{
+      if(!this.initialLnglat) return
+      const marker = new mapboxgl.Marker()
+      .setLngLat(this.initialLnglat)
+      .addTo(this.mapa)
+      this.markers.push(marker);
+      this.mapa.flyTo({center: [this.initialLnglat.lng, this.initialLnglat.lat]})
+    })
     this.mapa.on('click',({lngLat})=>{
       if (this.markers !==null ) {
         for (var i = this.markers.length - 1; i >= 0; i--) {

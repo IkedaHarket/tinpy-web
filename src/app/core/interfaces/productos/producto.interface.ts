@@ -1,7 +1,7 @@
 import { Categoria,Negocio } from "../";
 
 export interface Producto {
-  dislikes?:        any[];
+  dislikes?:        string[];
   _id?:             string;
   negocio?:         string | Negocio;
   nombre?:          string;
@@ -9,7 +9,7 @@ export interface Producto {
   precio?:          number;
   descripcion?:     string;
   numeroLikes?:     number;
-  likes?:           any[];
+  likes?:           string[];
   estado?:          boolean;
   imagenPrincipal?: string;
   categoria?:       Categoria;

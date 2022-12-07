@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
       map(({docs})=> docs),
       ).subscribe((productos)=> {
         this.products = productos?.slice(0,6) || [];
+        this.products = this.products.filter(({estado})=> estado)
     });
-
   }
 
   click(){
@@ -54,8 +54,9 @@ export class HomeComponent implements OnInit {
           })
           return
         }
-        localStorage.setItem('searchQuery',this.formSearch.get('search')?.value)
-        this.router.navigateByUrl('/search',{ state: { productos} })
+        localStorage.setItem('searchProducts',this.formSearch.get('search')?.value)
+        this.productosService.emitSearchedProducts(productos || {})
+        this.router.navigateByUrl('/search')
       },
       error:(err)=> console.log(err),
     });

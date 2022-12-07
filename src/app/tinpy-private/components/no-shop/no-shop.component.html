@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row my-3">
       <div class="col-12">
-        <h6 class="display-5 text-center">
+        <h6 class="display-5 text-center" *ngIf="!id">
           ¿Tienes un local o servicio que ofrecer?
+        </h6>
+        <h6 class="display-5 text-center" *ngIf="id">
+          Editar Negocio
         </h6>
       </div>
       <form [formGroup]="noShopForm" (submit)="submit()" class="row">
@@ -30,7 +33,7 @@
             </select>
           </div>
           <div class="col-12 mt-3">
-            <app-map-address class="text-center" (lngLat)="changeMarkerMap($event)"></app-map-address>
+            <app-map-address class="text-center" (lngLat)="changeMarkerMap($event)" [initialLnglat]="this.address.lngLat"></app-map-address>
           </div>
         </div>
     
@@ -104,7 +107,7 @@
         </div>
 
         <div class="col-12 text-center mt-3">
-            <button class="tinpyButton" [class.disabled]="noShopForm.invalid" type="submit">Crear</button>
+            <button class="tinpyButton" [class.disabled]="noShopForm.invalid" type="submit">{{(id)? 'Editar' : 'Crear'}}</button>
         </div>
       </form>
     </div>

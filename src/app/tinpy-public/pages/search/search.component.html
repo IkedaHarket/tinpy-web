@@ -2,36 +2,34 @@
 
 <div class="search-page">
 
-  <div class="custom-filter">
+  <!-- <div class="custom-filter">
     <h6>Filtrar</h6>
     <div class="custom-filter__form">
-      <select class="select-input-custom">
+      <select class="select-input-custom" title="categoria">
         <option value="#"selected>Categoria</option>
-        <option value="1">Categoria 1</option>
-        <option value="2">Categoria 2</option>
-        <option value="3">Categoria 3</option>
+        <option [value]="categoria._id" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
       </select>
-      <select class="select-input-custom">
+      <select class="select-input-custom" title="price">
         <option value="#"selected>Precio</option>
         <option value="1">Precio 1</option>
         <option value="2">Precio 2</option>
         <option value="3">Precio 3</option>
       </select>
-      <select class="select-input-custom">
+      <select class="select-input-custom" title="votes">
         <option value="#"selected>Votos</option>
         <option value="1">Mas Votados</option>
         <option value="2">Menos Votados</option>
       </select>
     </div>
-  </div>
+  </div> -->
 
   <div class="search-page__productos mt-5">
     <div class="search-page__productos-item mb-4" *ngFor="let producto of productos!.docs">
       <app-product-card-full [producto]="producto"></app-product-card-full>
     </div>
   </div>
+  
   <div class="search-page__paginator b-0">
     <p-paginator class="tinpy-paginator" [rows]="productos.limit || 5" [totalRecords]="productos.totalDocs || 0" (onPageChange)="paginate($event)"></p-paginator>
   </div>
-
 </div>

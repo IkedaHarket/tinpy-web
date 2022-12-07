@@ -15,7 +15,7 @@ export class CategoriaService {
   public get categorias() : Categoria[] {
     return [...this._categorias]
   }
-  
+
   constructor(private http: HttpClient) {}
 
   getCategorias():Observable<{ok:boolean;categorias:Categoria[]}>{

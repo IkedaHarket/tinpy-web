@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Horario, Negocio, Perfil } from 'src/app/core/interfaces';
 import { HorariosService } from 'src/app/core/services/horarios/horarios.service';
@@ -8,7 +9,8 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-my-shop',
   templateUrl: './my-shop.component.html',
-  styleUrls: ['./my-shop.component.scss']
+  styleUrls: ['./my-shop.component.scss'],
+  providers:[DialogService]
 })
 export class MyShopComponent implements OnInit {
 
@@ -19,11 +21,13 @@ export class MyShopComponent implements OnInit {
   drawPromedioEstrellas: string[] = [];
   horario: Horario = {};
   lngLat: [number,number] = [0,0];
+  editShop: boolean = false;
 
   constructor(
     private authService:AuthService,
     private negociosService: NegociosService,
     private horarioService: HorariosService,
+    public dialogService: DialogService,
     ) { }
 
   ngOnInit(): void {
@@ -40,10 +44,16 @@ export class MyShopComponent implements OnInit {
       }
     })
   }
+
   setHorario(id:string){
     this.horarioService.getHorariosById(id).subscribe({
       next:(horario) => this.horario = horario,
       error:(err) => console.log('Error al obtener horario',err),
     })
   }
+
+  openModalEditShop(){
+    this.editShop = !this.editShop;
+  }
+  
 }

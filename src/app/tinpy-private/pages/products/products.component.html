@@ -5,7 +5,7 @@
 </section>
 <div class="container" *ngIf="loadedProducts">
     <div class="my-4">
-        <button type="button" class="tinpyButton" (click)="openModalEdit()">Agregar nuevo producto</button>
+        <button type="button" class="tinpyButton" (click)="openModalNewProduct()">Agregar nuevo producto</button>
     </div>
     <section>
         <p-table [value]="products.docs!" styleClass="p-datatable-sm">
@@ -28,15 +28,43 @@
                             [alt]="product.nombre" 
                             width="100" 
                             class="shadow-4 cursor-pointer"
+                            title="Imagen Product"
                             routerLink="{{'/product/'+ product._id}}"
                             >
                     </td>
                     <td>{{product.categoria.nombre}}</td>
                     <td>{{product.precio}}</td>
-                    <td>
-                        <span>Editar</span>
+                    <td class="actions">
+                        <span 
+                            class="cursor-pointer fcolor-tinpy"
+                            (click)="openModalEditProduct(product)" 
+                            pTooltip="Editar" 
+                            tooltipPosition="bottom">
+                            <i class="fa fa-duotone fa-pen-to-square"></i>
+                        </span>
                         <span> / </span>
-                        <span (click)="delete(product._id)" class="cursor-pointer">Eliminar</span>
+                        <span (click)="delete(product._id)" class="cursor-pointer fcolor-tinpy" pTooltip="Eliminar" tooltipPosition="bottom">
+                            <i class="fa fa-solid fa-trash"></i>
+                        </span>
+                        <span> / </span>
+                        <span 
+                            *ngIf="product.estado"
+                            class="cursor-pointer fcolor-tinpy" 
+                            pTooltip="Deshabilitar" 
+                            tooltipPosition="bottom"
+                            (click)="changeStateProduct(product._id)"
+                            >
+                            <i class="fa fa-solid fa-x"></i>
+                        </span>
+                        <span 
+                            *ngIf="!product.estado"
+                            class="cursor-pointer fcolor-tinpy" 
+                            pTooltip="Habilitar" 
+                            tooltipPosition="bottom"
+                            (click)="changeStateProduct(product._id)"
+                            >
+                            <i class="fa fa-solid fa-check"></i>
+                        </span>
                     </td>
                 </tr>
             </ng-template>

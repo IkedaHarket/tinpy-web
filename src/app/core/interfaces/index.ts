@@ -8,6 +8,7 @@ export {
   ProductosByNameRes,
 } from './productos';
 
+export { ProductPostResp } from './productos/product-post-response.interface';
 export { Horario } from './horarios';
 export { Estrella } from './estrellas';
 export { Direccion } from './direccion';

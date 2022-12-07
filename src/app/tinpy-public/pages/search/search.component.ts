@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ProductosService } from 'src/app/core/services/productos/productos.service';
-import { ProductosPages } from 'src/app/core/interfaces';
+import { Categoria, ProductosPages } from 'src/app/core/interfaces';
+import { CategoriaService } from '../../../core/services/categorias/categoria.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -11,26 +13,36 @@ import { ProductosPages } from 'src/app/core/interfaces';
 export class SearchComponent implements OnInit {
 
   productos : ProductosPages = {};
-  searchQuery: string = '';
   page:number = 1;
   limit: number = 5;
-
+  categorias: Categoria[] = [];
+  
   constructor(
     private productosService: ProductosService,
+    private categoriasService: CategoriaService,
     ) { }
 
   ngOnInit() {
-    this.searchQuery = localStorage.getItem('searchQuery') || 'a';
-
-    if(window.history.state.productos){
-      this.productos = window.history.state.productos
+    if(this.categoriasService.categorias.length === 0){
+      this.categoriasService.getCategorias().pipe(take(1)).subscribe(({categorias})=>{
+        this.categorias = categorias
+      })
     }else{
-      this.getProductsByName();
+      this.categorias = this.categoriasService.categorias;
     }
 
+    this.productosService.searchedProducts$.subscribe((products)=>{
+      this.productos = products
+      this.productos.docs = this.productos.docs?.filter(({estado})=> estado)
+      
+      if(Object.keys(products).length === 0){
+        this.getProductsByName()
+      }
+    })
   }
   getProductsByName(){
-    this.productosService.getProductosByNamePaginates(this.searchQuery,this.page,this.limit).subscribe({
+    this.productosService.getProductosByNamePaginates(localStorage.getItem('searchProducts')!, this.page,this.limit)
+    .subscribe({
       next: ({productos})=>{
         if(productos!.docs?.length == 0){
           Swal.fire({
@@ -41,7 +53,10 @@ export class SearchComponent implements OnInit {
           })
           return
         }
+        console.log(productos);
         this.productos = productos || {};
+        this.productos.docs = this.productos.docs?.filter(({estado})=> estado)
+        this.productosService.emitSearchedProducts(this.productos)
       },
       error:(err)=> console.log(err),
     })
@@ -51,4 +66,5 @@ export class SearchComponent implements OnInit {
     this.page = event.page+1;
     this.getProductsByName()
   }
+
 }

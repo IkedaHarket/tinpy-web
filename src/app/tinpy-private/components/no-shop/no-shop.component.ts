@@ -1,9 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoNegociosService } from '../../../core/services/tipo-negocios/tipo-negocios.service';
 import { ShopType } from '../../../core/interfaces/tipo-negocios/shopTypes.interface';
 import { NegociosService } from '../../../core/services/negocios/negocios.service';
 import { DireccionService } from '../../../core/services/direccion/direccion.service';
+import { Subscription, take, map, catchError, of } from 'rxjs';
+import { Negocio } from '../../../core/interfaces/negocios/negocio.interface';
+import Swal from 'sweetalert2';
 
 type Plans = 'basic' | 'estandar' | 'premium'
 enum PlansTypes {
@@ -22,6 +25,8 @@ export class NoShopComponent implements OnInit {
 
   plan:Plans = PlansTypes.BASIC;
 
+  @Input() id?: string = '';
+
   noShopForm: FormGroup = this.fb.group({
     name: ['',[Validators.required]],
     shopType: ['#',[Validators.required]],
@@ -29,10 +34,11 @@ export class NoShopComponent implements OnInit {
     email: ['',[Validators.required]],
     desc: ['',[Validators.required]],
     img:[]
-  })
-
+  });
+  unShop!: Subscription;
   shopTypes: ShopType[] = [];
   address: {exist:boolean ; lngLat?:any} = {exist:false} 
+  
   constructor(
     private fb: FormBuilder,
     private shopTypesService: TipoNegociosService,
@@ -42,12 +48,34 @@ export class NoShopComponent implements OnInit {
   
   ngOnInit(): void {
     this.shopTypes = this.shopTypesService.shopTypes.tipoNegocios || [];
+    if(this.id){
+     this.unShop = this.negocioService.getNegocioById(this.id).pipe(
+      take(1),
+      map(({negocios})=> negocios),
+      catchError(()=> of<Negocio>({}))
+      ).subscribe((shop)=>{
+        if(typeof shop === undefined) return;
+        this.noShopForm.get('name')?.setValue(shop?.nombre)
+        this.noShopForm.get('shopType')?.setValue(shop?.tipoNegocio?._id)
+        this.address = {exist: true, lngLat:{lng: shop?.direccion?.lng, lat: shop?.direccion?.lat}}
+        this.noShopForm.get('phone')?.setValue(shop?.telefono)
+        this.noShopForm.get('email')?.setValue(shop?.correo)
+        this.noShopForm.get('desc')?.setValue(shop?.descripcion)
+      })
+    }
   }
   submit(){
     if(this.noShopForm.invalid || this.noShopForm.get('shopType')?.value == '#') return
-    this.negocioService.postNegocio(this.noShopForm.value).subscribe(()=>{
-      this.saveAddress();
-    });
+    if(this.id){
+      this.negocioService.putNegocio(this.id,this.noShopForm.value).subscribe(()=>{
+        this.saveAddress();
+        Swal.fire({title:'Negocio actualizado',icon:'success'})
+      });
+    }else{
+      this.negocioService.postNegocio(this.noShopForm.value).subscribe(()=>{
+        this.saveAddress();
+      });
+    }
   }
   
   saveAddress(){

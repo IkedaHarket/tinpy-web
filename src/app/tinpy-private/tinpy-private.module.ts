@@ -14,6 +14,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { NewProductComponent } from './components/modals/new-product/new-product.component';
 import { SharedModule } from '../shared/shared.module';
+import { EditProductComponent } from './components/modals/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     MapAddressComponent,
     ProductsComponent,
     NewProductComponent,
+    EditProductComponent,
   ],
   imports: [
     CommonModule,

@@ -2,13 +2,20 @@
   <div class="header__logo">
     <span routerLink="/" class="cursor-pointer tinpy-logo">Tinpy</span>
   </div>
-  <input
+  <form [formGroup]="form">
+    <input
     class="header__input-search inputCustomField"
     type="text"
     placeholder="Buscar"
     *ngIf="searchInput"
+    formControlName="query"
+    (keyup.enter)="searchProducts()"
   />
-  <div class="header__img imgCircular">
-    <app-menu-header [perfil]="perfil" (logout)="logout()"></app-menu-header>
+  </form>
+  <div class="header__img-container">
+    <span >{{perfil.nombre}}</span>
+    <div class="header__img imgCircular">
+      <app-menu-header [perfil]="perfil" (logout)="logout()"></app-menu-header>
+    </div>
   </div>
 </header>
