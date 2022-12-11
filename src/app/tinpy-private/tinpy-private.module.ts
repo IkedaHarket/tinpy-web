@@ -15,6 +15,7 @@ import { PrimengModule } from '../primeng/primeng.module';
 import { NewProductComponent } from './components/modals/new-product/new-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { EditProductComponent } from './components/modals/edit-product/edit-product.component';
+import { HorarioComponent } from './components/modals/horario/horario.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { EditProductComponent } from './components/modals/edit-product/edit-prod
     ProductsComponent,
     NewProductComponent,
     EditProductComponent,
+    HorarioComponent,
   ],
   imports: [
     CommonModule,

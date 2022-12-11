@@ -1,1 +1,1 @@
-export { Horario } from './horario';
+export { RespHorario, Horario } from './horario';

@@ -1,0 +1,135 @@
+<section>
+    <form [formGroup]="horarioForm" class="row justify-content-center" (submit)="save()">
+      <div class="col-12">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Lunes Inicio"
+                        formControlName="lunes_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Lunes Cierre"
+                        formControlName="lunes_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Martes Inicio"
+                        formControlName="martes_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Martes Cierre"
+                        formControlName="martes_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Miercoles Inicio"
+                        formControlName="miercoles_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Miercoles Cierre"
+                        formControlName="miercoles_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Jueves Inicio"
+                        formControlName="jueves_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Jueves Cierre"
+                        formControlName="jueves_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Viernes Inicio"
+                        formControlName="viernes_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Viernes Cierre"
+                        formControlName="viernes_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Sabado Inicio"
+                        formControlName="sabado_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Sabado Cierre"
+                        formControlName="sabado_cierre"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Domingo Inicio"
+                        formControlName="domingo_inicio"
+                    />
+                </div>
+                <div class="col-12 col-md-6">
+                    <input
+                        class="inputCustomField bottomLine py-10 mb-3"
+                        type="text"
+                        placeholder="Domingo Cierre"
+                        formControlName="domingo_cierre"
+                    />
+                </div>
+            </div>
+            
+      </div>
+      <button type="submit" class="tinpyButton col-3 mt-2" [class.disabled]="horarioForm.invalid">Guardar</button>
+    </form>
+  </section>
+  

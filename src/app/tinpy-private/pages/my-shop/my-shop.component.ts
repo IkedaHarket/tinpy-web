@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Horario, Negocio, Perfil } from 'src/app/core/interfaces';
 import { HorariosService } from 'src/app/core/services/horarios/horarios.service';
 import { NegociosService } from 'src/app/core/services/negocios/negocios.service';
 import { environment } from 'src/environments/environment';
+import { HorarioComponent } from '../../components/modals/horario/horario.component';
+import { MyShopService } from '../../services/my-shop.service';
 
 @Component({
   selector: 'app-my-shop',
@@ -22,12 +24,14 @@ export class MyShopComponent implements OnInit {
   horario: Horario = {};
   lngLat: [number,number] = [0,0];
   editShop: boolean = false;
+  refModal!:DynamicDialogRef;
 
   constructor(
     private authService:AuthService,
     private negociosService: NegociosService,
     private horarioService: HorariosService,
     public dialogService: DialogService,
+    private myShopService: MyShopService 
     ) { }
 
   ngOnInit(): void {
@@ -55,5 +59,15 @@ export class MyShopComponent implements OnInit {
   openModalEditShop(){
     this.editShop = !this.editShop;
   }
-  
+
+  openModalHorario(){
+    this.myShopService.emitNegocioSelected(this.shop)
+    this.refModal = this.dialogService.open(HorarioComponent, {
+      header: 'Horario',
+      width: '50%',
+      contentStyle: {"height": "auto", "overflow": "auto"},
+      baseZIndex: 10000,
+      closeOnEscape:true,
+    });
+  }
 }

@@ -20,3 +20,9 @@ export interface Horario {
   updatedAt?:        Date;
   __v?:              number;
 }
+export interface RespHorario {
+  ok?:       boolean;
+  msg?:      string;
+  horarios?: Horario;
+}
+
